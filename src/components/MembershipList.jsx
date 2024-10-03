@@ -40,11 +40,11 @@ const MembershipList = () => {
           </div>
 
           <Button
-            className="w-full mb-6 sm:w-[85%] sm:justify-center sm:items-center"
+            className="w-full mb-6"
             href={
               item.oneOffPrice ? "/pricing" : "mailto:noizynightke@gmail.com"
             }
-            white={!!item.oneOffPrice}
+            //white={!!item.oneOffPrice}
           >
             {item.oneOffPrice ? "Get started" : "Contact us"}
           </Button>

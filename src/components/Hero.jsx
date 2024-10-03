@@ -46,9 +46,7 @@ const Hero = () => {
             A gothic-themed event in Nairobi to celebrate rock and opium rap
             music genres
           </p>
-          <Button href="#events" white>
-            Events
-          </Button>
+          <Button href="#events">Events</Button>
         </div>
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
