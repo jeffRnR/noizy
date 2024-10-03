@@ -252,7 +252,7 @@ export const events = [
     title: "Noizy Night 1.1",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
     venue: "Undecided",
-    backgroundUrl: benefitCard3,
+    backgroundUrl: benefitCard2,
     iconUrl: benefitIcon3,
     imageUrl: noizy_3,
     light: true,
