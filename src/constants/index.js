@@ -4,6 +4,11 @@ import {
   benefitIcon3,
   benefitIcon4,
   benefitImage2,
+  benefitCard1,
+  benefitCard2,
+  benefitCard3,
+  benefitCard4,
+  benefitCard5,
   chromecast,
   disc02,
   discord,
@@ -34,20 +39,22 @@ import {
   telegram,
   twitter,
   yourlogo,
+  noizy_3,
+  noizy_2,
 } from "../assets";
 
 export const navigation = [
   {
     id: "0",
-    title: "Events",
-    url: "#events",
+    title: "Home",
+    url: "#",
     //feautres
   },
   {
     id: "1",
-    title: "Tickets",
-    url: "#tickets",
-    //pricing
+    title: "Events",
+    url: "#events",
+    //feautres
   },
   {
     id: "2",
@@ -63,13 +70,25 @@ export const navigation = [
   },
   {
     id: "4",
+    title: "Playlist",
+    url: "#playlist",
+    //roadmap
+  },
+  {
+    id: "5",
+    title: "Membership",
+    url: "#membership",
+    //roadmap
+  },
+  {
+    id: "6",
     title: "Contact",
     url: "#contact",
     //onlyMobile: true,
     //sign-up
   },
   {
-    id: "5",
+    id: "7",
     title: "Sign in",
     url: "#login",
     onlyMobile: true,
@@ -213,121 +232,54 @@ export const collabApps = [
 export const pricing = [
   {
     id: "0",
-    title: "Basic",
-    description: "AI chatbot, personalized recommendations",
-    price: "0",
+    title: "Membership",
+    description:
+      "The membership fee includes a one off payment of KES 7500 and a monthly subscription of 150",
+    oneOffPrice: "7500",
+    monthlyPrice: "150",
     features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
-    ],
-  },
-  {
-    id: "1",
-    title: "Premium",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
-    price: "9.99",
-    features: [
-      "An advanced AI chatbot that can understand complex queries",
-      "An analytics dashboard to track your conversations",
-      "Priority support to solve issues quickly",
-    ],
-  },
-  {
-    id: "2",
-    title: "Enterprise",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
-    price: null,
-    features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
+      "Exclussive merch",
+      "Exclussive events",
+      "Free VIP passes for all events with VIP slots",
+      "Discounted tickets on some events",
     ],
   },
 ];
 
-export const benefits = [
+export const events = [
   {
     id: "0",
-    title: "Ask anything",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-1.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
+    title: "Noizy Night 1.1",
+    date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
+    venue: "Undecided",
+    backgroundUrl: benefitCard3,
+    iconUrl: benefitIcon3,
+    imageUrl: noizy_3,
+    light: true,
   },
   {
     id: "1",
-    title: "Improve everyday",
-    text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-    backgroundUrl: "assets/benefits/card-2.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
-    light: true,
-  },
-  {
-    id: "2",
-    title: "Connect everywhere",
-    text: "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
-    backgroundUrl: "assets/benefits/card-3.svg",
+    title: "Noizy Night 1.2",
+    venue: "Undecided",
+    date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
+    backgroundUrl: benefitCard3,
     iconUrl: benefitIcon3,
-    imageUrl: benefitImage2,
-  },
-  {
-    id: "3",
-    title: "Fast responding",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-4.svg",
-    iconUrl: benefitIcon4,
-    imageUrl: benefitImage2,
+    imageUrl: noizy_3,
     light: true,
-  },
-  {
-    id: "4",
-    title: "Ask anything",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-5.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-  },
-  {
-    id: "5",
-    title: "Improve everyday",
-    text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-    backgroundUrl: "assets/benefits/card-6.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
   },
 ];
 
 export const socials = [
   {
     id: "0",
-    title: "Discord",
-    iconUrl: discordBlack,
-    url: "#",
-  },
-  {
-    id: "1",
-    title: "Twitter",
-    iconUrl: twitter,
-    url: "#",
-  },
-  {
-    id: "2",
     title: "Instagram",
     iconUrl: instagram,
     url: "#",
   },
   {
-    id: "3",
-    title: "Telegram",
-    iconUrl: telegram,
-    url: "#",
-  },
-  {
-    id: "4",
-    title: "Facebook",
-    iconUrl: facebook,
+    id: "2",
+    title: "Twitter",
+    iconUrl: twitter,
     url: "#",
   },
 ];

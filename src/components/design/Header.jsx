@@ -1,4 +1,4 @@
-import { noizy_1 } from "../../assets";
+import { noizy_3 } from "../../assets";
 
 export const Rings = () => {
   return (
@@ -34,7 +34,7 @@ export const HamburgerMenu = () => {
       <div className="absolute inset-0 opacity-[.07]">
         <img
           className="w-full h-full object-cover"
-          src={noizy_1}
+          src={noizy_3}
           width={688}
           height={953}
           alt="Background"
