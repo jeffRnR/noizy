@@ -10,7 +10,7 @@ const Footer = () => {
       items-center gap-10 max-sm:flex-col"
       >
         <p className="caption text-n-4 lg:block">
-          ©<span className="font-semibold">Noizy Nights</span> .{" "}
+          ©<span className="font-semibold">Noizy Night</span> .{" "}
           {new Date().getFullYear()} . All rights reserved
         </p>
         <ul className="flex gap-5 flex-wrap">

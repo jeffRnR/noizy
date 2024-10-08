@@ -284,33 +284,12 @@ export const socials = [
     id: "0",
     title: "Instagram",
     iconUrl: instagram,
-    url: "#",
+    url: "https://www.instagram.com/noizynight_/",
   },
   {
     id: "2",
     title: "Twitter",
     iconUrl: twitter,
-    url: "#",
-  },
-];
-
-export const tickets = [
-  {
-    id: "0",
-    type: "Early Bird",
-    price: "1000",
-    max: "25",
-  },
-  {
-    id: "1",
-    type: "Advanced",
-    price: "1500",
-    max: "150",
-  },
-  {
-    id: "2",
-    type: "Gate",
-    price: "2000",
-    max: "25",
+    url: "https://twitter.com/noizynightke",
   },
 ];
