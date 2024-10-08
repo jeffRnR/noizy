@@ -8,6 +8,7 @@ import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
 import Playlist from "./pages/Playlist";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Hero />
                 <Events />
                 <Membership />
+                <Footer />
               </>
             }
           />
