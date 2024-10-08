@@ -44,7 +44,7 @@ const TicketPurchase = () => {
       <Section id="ticket-purchase">
         <div className="container relative z-2 ">
           <Heading
-            className="md:max-w-md lg:max-w-2xl text-start sm:text-center"
+            className="md:max-w-md lg:max-w-2xl"
             title={`Purchase Tickets for ${event.title}`}
             tag="Tickets"
           />

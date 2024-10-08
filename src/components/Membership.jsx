@@ -10,6 +10,7 @@ const Membership = () => {
         <Heading
           title="Join our community of Ragers"
           tag="Pay to become a rager"
+          className="text-center"
         />
 
         <div className="relative">
