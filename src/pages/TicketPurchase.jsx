@@ -51,11 +51,8 @@ const TicketPurchase = () => {
 
           <div className="flex flex-wrap gap-10 mb-10 justify-center">
             <div
-              className="flex relative p-0.5 bg-no-repeat 
+              className="flex relative p-0.5 bg-no-repeat border-2 border-color-7 rounded-[2rem]
               bg-[length:100%_100%] md:max-w-[44rem] justify-center items-center"
-              style={{
-                backgroundImage: `url(${benefitCard3})`,
-              }}
             >
               <div
                 className="relative z-2 flex flex-col min-h-[25rem] 

@@ -19,10 +19,11 @@ const Events = () => {
             <div
               className="flex flex-wrap relative p-0.5 bg-no-repeat 
                 bg-[length:100%_100%] md:max-w-[24rem] justify-center items-center
+                border-2 border-color-7 rounded-[2rem]
                 "
-              style={{
-                backgroundImage: `url(${item.backgroundUrl})`,
-              }}
+              // style={{
+              //   backgroundImage: `url(${item.backgroundUrl})`,
+              // }}
               key={item.id}
             >
               <div
