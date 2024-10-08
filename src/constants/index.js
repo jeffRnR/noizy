@@ -59,7 +59,7 @@ export const navigation = [
   {
     id: "3",
     title: "Album",
-    url: "#album",
+    url: "/album",
     //roadmap
   },
   {

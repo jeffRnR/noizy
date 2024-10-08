@@ -29,7 +29,7 @@ const App = () => {
           {/* Route for Ticket Purchase */}
           <Route path="/purchase/:eventId" element={<TicketPurchase />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="#album" element={<Album />} />
+          <Route path="/album" element={<Album />} />
           <Route path="/playlist" element={<Playlist />} />
         </Routes>
       </div>
