@@ -5,6 +5,7 @@ import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
 import { Link } from "react-router-dom";
+import { benefitCard3 } from "../assets";
 
 const Events = () => {
   return (
@@ -21,7 +22,8 @@ const Events = () => {
                 bg-[length:100%_100%] md:max-w-[24rem] justify-center items-center
                 "
               style={{
-                backgroundImage: `url(${item.backgroundUrl})`,
+                // backgroundImage: `url(${item.backgroundUrl})`,
+                backgroundImage: `url(${benefitCard3})`,
               }}
               key={item.id}
             >
