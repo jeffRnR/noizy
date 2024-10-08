@@ -56,7 +56,7 @@ const TicketPurchase = () => {
             >
               <div
                 className="relative z-2 flex flex-col min-h-[25rem] 
-                p-[2.4rem] pointer-events-none justify-start "
+                p-[2.4rem] justify-start "
               >
                 <h5 className="h3 mb-10 font-bold font-sans">{event.title}</h5>
                 <p
@@ -96,6 +96,7 @@ const TicketPurchase = () => {
                         {ticketsLeft > 0 ? (
                           <div>
                             {/* <p>Tickets Left: {ticketsLeft}</p> */}
+
                             <label className="body-1 text-n-1/70">
                               Number of Tickets:
                               <input
@@ -103,7 +104,7 @@ const TicketPurchase = () => {
                                 min="1"
                                 max={ticket.max}
                                 defaultValue="1"
-                                className="ml-2 border p-1 text-n-1/80"
+                                className="ml-2 border-2 border-color-7 py-1 min-w-[5rem] px-2 text-n-1/80  bg-transparent rounded-lg transition-transform"
                               />
                             </label>
                           </div>
