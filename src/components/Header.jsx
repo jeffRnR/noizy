@@ -56,7 +56,8 @@ const Header = () => {
             {navigation.map((item) => (
               <Link
                 key={item.id}
-                href={item.url}
+                // href={item.url}
+                to={`${item.url}`}
                 onClick={handleClick}
                 className={`block relative font-code text-2xl uppercase text-n-1 
                     transition-colors hover:text-color-1 ${
