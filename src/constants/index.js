@@ -47,50 +47,38 @@ export const navigation = [
   {
     id: "0",
     title: "Home",
-    url: "#",
-    //feautres
-  },
-  {
-    id: "1",
-    title: "Events",
-    url: "#events",
+    url: "/",
     //feautres
   },
   {
     id: "2",
     title: "Terms",
-    url: "#terms",
+    url: "/terms",
     //how-to-use
   },
   {
     id: "3",
     title: "Album",
-    url: "#album",
+    url: "/album",
     //roadmap
   },
   {
     id: "4",
     title: "Playlist",
-    url: "#playlist",
-    //roadmap
-  },
-  {
-    id: "5",
-    title: "Membership",
-    url: "#membership",
+    url: "/playlist",
     //roadmap
   },
   {
     id: "6",
     title: "Contact",
-    url: "#contact",
+    url: "/contact",
     //onlyMobile: true,
     //sign-up
   },
   {
     id: "7",
     title: "Sign in",
-    url: "#login",
+    url: "/login",
     onlyMobile: true,
   },
 ];
@@ -252,10 +240,32 @@ export const events = [
     title: "Noizy Night 1.1",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
     venue: "Undecided",
+    dressCode: "Strictly Emo",
+    lineUp: "Dj1, Dj2, Dj0",
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: noizy_3,
     light: true,
+    tickets: [
+      {
+        id: "0",
+        type: "Early Bird",
+        price: "1000",
+        max: "25",
+      },
+      {
+        id: "1",
+        type: "Advanced",
+        price: "1500",
+        max: "150",
+      },
+      {
+        id: "2",
+        type: "Gate",
+        price: "2000",
+        max: "25",
+      },
+    ],
   },
   {
     id: "1",
@@ -281,5 +291,26 @@ export const socials = [
     title: "Twitter",
     iconUrl: twitter,
     url: "#",
+  },
+];
+
+export const tickets = [
+  {
+    id: "0",
+    type: "Early Bird",
+    price: "1000",
+    max: "25",
+  },
+  {
+    id: "1",
+    type: "Advanced",
+    price: "1500",
+    max: "150",
+  },
+  {
+    id: "2",
+    type: "Gate",
+    price: "2000",
+    max: "25",
   },
 ];

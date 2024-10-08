@@ -5,7 +5,6 @@ import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
 import { Link } from "react-router-dom";
-import { benefitCard3 } from "../assets";
 
 const Events = () => {
   return (
@@ -22,8 +21,7 @@ const Events = () => {
                 bg-[length:100%_100%] md:max-w-[24rem] justify-center items-center
                 "
               style={{
-                // backgroundImage: `url(${item.backgroundUrl})`,
-                backgroundImage: `url(${benefitCard3})`,
+                backgroundImage: `url(${item.backgroundUrl})`,
               }}
               key={item.id}
             >
@@ -34,12 +32,28 @@ const Events = () => {
                 <h5 className="h5 mb-10 font-bold font-sans">{item.title}</h5>
                 <p
                   className="body-1 text-[15px] text-n-1/80 font-code 
-                font-semibold uppercase mb-6"
+                font-semibold uppercase mb-4"
                 >
                   {item.date}
                 </p>
-                <p className="body-1 mb-10 text-n-1/70 font-code text-[13px] uppercase">
-                  {item.venue}
+
+                <p className="body-1 mb-4 text-n-1/60 font-code text-[13px] uppercase">
+                  Line-up:{" "}
+                  <span className="text-n-1/80 text-[15px] font-semibold">
+                    {item.lineUp}
+                  </span>
+                </p>
+                <p className="body-1 mb-4 text-n-1/60 font-code text-[13px] uppercase">
+                  Dress Code:{" "}
+                  <span className="text-n-1/80 text-[15px] font-semibold">
+                    {item.dressCode}
+                  </span>
+                </p>
+                <p className="body-1 mb-4 text-n-1/60 font-code text-[13px] uppercase font-semibold">
+                  Venue:{" "}
+                  <span className="text-n-1/80 text-[15px] font-semibold">
+                    {item.venue}
+                  </span>
                 </p>
                 <div className="flex items-center mt-auto">
                   <img
@@ -54,6 +68,7 @@ const Events = () => {
                   >
                     Buy Tickets
                   </Link>
+
                   <Link
                     to={`/purchase/${item.id}`}
                     className="ml-2 cursor-pointer hover:opacity-70"
