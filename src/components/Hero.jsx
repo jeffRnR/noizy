@@ -42,9 +42,9 @@ const Hero = () => {
               ></img> */}
             </span>
           </h1>
-          <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            A gothic-themed event in Nairobi to celebrate rock and opium rap
-            music genres
+          <p className="body-1 max-w-xl mx-auto mb-6 text-n-2 lg:mb-8">
+            A gothic-themed event in Nairobi to celebrate opium rap and other
+            hiphop music sub-genres
           </p>
           <Button href="#events">Events</Button>
         </div>

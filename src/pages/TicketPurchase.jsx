@@ -7,6 +7,7 @@ import { GradientLight } from "../components/design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
 import { processPayment, updateTicketCount } from "../backend/PaymentServices";
 import { benefitCard3 } from "../assets";
+import Header from "../components/Header";
 
 // Simulated purchased tickets (for example purposes)
 const purchasedTickets = {
@@ -41,80 +42,84 @@ const TicketPurchase = () => {
     return <div>Event not found</div>;
   } else {
     return (
-      <Section id="ticket-purchase">
-        <div className="container relative z-2 ">
-          <Heading
-            className="md:max-w-md lg:max-w-2xl"
-            title={`Purchase Tickets for ${event.title}`}
-            tag="Tickets"
-          />
+      <>
+        <Header />
+        <Section id="ticket-purchase">
+          <div className="container relative z-2 mt-12 ">
+            <Heading
+              className="md:max-w-md lg:max-w-2xl h1"
+              title={`Purchase Tickets for ${event.title}`}
+              tag="Tickets"
+            />
 
-          <div className="flex flex-wrap gap-10 mb-10 justify-center">
-            <div
-              className="flex relative p-0.5 bg-no-repeat border-2 border-color-7 rounded-[2rem]
-              bg-[length:100%_100%] md:max-w-[44rem] justify-center items-center"
-            >
+            <div className="flex flex-wrap gap-10 mb-10 justify-center">
               <div
-                className="relative z-2 flex flex-col min-h-[25rem] 
-                p-[2.4rem] justify-start "
+                className="flex relative p-0.5 bg-no-repeat border-2 border-color-7 rounded-[2rem]
+              bg-[length:100%_100%] md:max-w-[44rem] justify-center items-center"
               >
-                <h5 className="h3 mb-10 font-bold font-sans">{event.title}</h5>
-                <p
-                  className="body-1 text-[15px] text-n-1/80 font-code 
-                  font-semibold uppercase mb-2"
+                <div
+                  className="relative z-2 flex flex-col min-h-[25rem] 
+                p-[2.4rem] justify-start "
                 >
-                  {event.date}
-                </p>
-                <p className="body-1 mb-2 text-n-1/70 font-code text-[13px] uppercase">
-                  {event.venue}
-                </p>
-                <p className="body-1 mb-10 text-n-1/70 font-code text-[13px] uppercase">
-                  Dress Code: {event.dressCode}
-                </p>
+                  <h5 className="h3 mb-10 font-bold font-sans">
+                    {event.title}
+                  </h5>
+                  <p
+                    className="body-1 text-[15px] text-n-1/80 font-code 
+                  font-semibold uppercase mb-2"
+                  >
+                    {event.date}
+                  </p>
+                  <p className="body-1 mb-2 text-n-1/70 font-code text-[13px] uppercase">
+                    {event.venue}
+                  </p>
+                  <p className="body-1 mb-10 text-n-1/70 font-code text-[13px] uppercase">
+                    Dress Code: {event.dressCode}
+                  </p>
 
-                {/* Map through the tickets and render each one */}
-                {event.tickets &&
-                  event.tickets.map((ticket) => {
-                    const purchased =
-                      purchasedTickets[eventId]?.[ticket.id] || 0;
-                    const ticketsLeft = ticket.max - purchased;
+                  {/* Map through the tickets and render each one */}
+                  {event.tickets &&
+                    event.tickets.map((ticket) => {
+                      const purchased =
+                        purchasedTickets[eventId]?.[ticket.id] || 0;
+                      const ticketsLeft = ticket.max - purchased;
 
-                    return (
-                      <div key={ticket.id} className="mb-6">
-                        <div className="text-[1.25rem] sm:text-[2rem] mb-2 font-bold">
-                          <h4 className="text-[1.25rem] sm:text-[2rem]">
-                            {ticket.type}
-                            <h3 className="text-[1.25] sm:text-[2rem] mt-2 sm:mt-6 mb-4 sm:mb-10">
-                              <span className="text-[0.7rem] sm:text-[1rem] text-n-1/80">
-                                Ksh
-                              </span>{" "}
-                              {ticket.price}
-                            </h3>
-                          </h4>
-                        </div>
-                        {/* <p>Max Tickets: {ticket.max}</p> */}
-                        {ticketsLeft > 0 ? (
-                          <div>
-                            {/* <p>Tickets Left: {ticketsLeft}</p> */}
-
-                            <label className="body-1 text-n-1/70">
-                              Number of Tickets:
-                              <input
-                                type="number"
-                                min="1"
-                                max={ticket.max}
-                                defaultValue="1"
-                                className="ml-2 border-2 border-color-7 py-1 min-w-[5rem] px-2 text-n-1/80  bg-transparent rounded-lg transition-transform"
-                              />
-                            </label>
+                      return (
+                        <div key={ticket.id} className="mb-6">
+                          <div className="text-[1.25rem] sm:text-[2rem] mb-2 font-bold">
+                            <h4 className="text-[1.25rem] sm:text-[2rem]">
+                              {ticket.type}
+                              <h3 className="text-[1.25] sm:text-[2rem] mt-2 sm:mt-6 mb-4 sm:mb-10">
+                                <span className="text-[0.7rem] sm:text-[1rem] text-n-1/80">
+                                  Ksh
+                                </span>{" "}
+                                {ticket.price}
+                              </h3>
+                            </h4>
                           </div>
-                        ) : (
-                          <p className="text-red-500 font-bold">Sold Out</p>
-                        )}
-                      </div>
-                    );
-                  })}
-                {/* <label className="body-1 text-n-1/70">
+                          {/* <p>Max Tickets: {ticket.max}</p> */}
+                          {ticketsLeft > 0 ? (
+                            <div>
+                              {/* <p>Tickets Left: {ticketsLeft}</p> */}
+
+                              <label className="body-1 text-n-1/70">
+                                Number of Tickets:
+                                <input
+                                  type="number"
+                                  min="1"
+                                  max={ticket.max}
+                                  defaultValue="1"
+                                  className="ml-2 border-2 border-color-7 py-1 min-w-[5rem] px-2 text-n-1/80  bg-transparent rounded-lg transition-transform"
+                                />
+                              </label>
+                            </div>
+                          ) : (
+                            <p className="text-red-500 font-bold">Sold Out</p>
+                          )}
+                        </div>
+                      );
+                    })}
+                  {/* <label className="body-1 text-n-1/70">
                   Phone Number:
                   <input
                     type="tel"
@@ -124,37 +129,38 @@ const TicketPurchase = () => {
                   />
                 </label> */}
 
-                <button className="ml-auto font-mono text-[13px] font-bold text-color-1 uppercase tracking-wider cursor-pointer flex">
-                  Proceed to Payment
-                  <span className="ml-2 cursor-pointer">
-                    <Arrow />
-                  </span>
-                </button>
-              </div>
-
-              {event.light && <GradientLight />}
-              <div
-                className="absolute inset-0.5 overflow-hidden"
-                style={{ clipPath: "url(#ticket-purchase)" }}
-              >
-                <div className="absolute inset-0 opacity-[2%] transition-opacity hover:opacity-[10%]">
-                  {event.imageUrl && (
-                    <img
-                      src={event.imageUrl}
-                      alt={event.title}
-                      width={380}
-                      height={362}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                  <button className="ml-auto font-mono text-[13px] font-bold text-color-1 uppercase tracking-wider cursor-pointer flex">
+                    Proceed to Payment
+                    <span className="ml-2 cursor-pointer">
+                      <Arrow />
+                    </span>
+                  </button>
                 </div>
-              </div>
 
-              <ClipPath />
+                {event.light && <GradientLight />}
+                <div
+                  className="absolute inset-0.5 overflow-hidden"
+                  style={{ clipPath: "url(#ticket-purchase)" }}
+                >
+                  <div className="absolute inset-0 opacity-[2%] transition-opacity hover:opacity-[10%]">
+                    {event.imageUrl && (
+                      <img
+                        src={event.imageUrl}
+                        alt={event.title}
+                        width={380}
+                        height={362}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                </div>
+
+                <ClipPath />
+              </div>
             </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      </>
     );
   }
 };
