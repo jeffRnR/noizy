@@ -20,7 +20,7 @@ import chromecast from "./chrome-cast.svg";
 import sliders04 from "./sliders-04.svg";
 import loading from "./loading.png";
 import background from "./background.jpg";
-import noizy_logo from "./noizy_logo.jpg";
+import noizy_logo from "./noizy_logo.svg";
 import noizy_1 from "./noizy_1.jpg";
 import noizy_2 from "./noizy_2.jpg";
 import noizy_3 from "./noizy_3.jpg";

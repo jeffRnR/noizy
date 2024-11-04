@@ -4,7 +4,7 @@ const Terms = () => {
   return (
     <>
       <Header />
-      <div className="mt-10"></div>
+      <div className="mt-10">Terms</div>
     </>
   );
 };

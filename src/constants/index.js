@@ -68,15 +68,27 @@ export const navigation = [
     url: "/playlist",
     //roadmap
   },
+  // {
+  //   id: "5",
+  //   title: "Noizy Marketplace",
+  //   url: "/noizy-marketplace",
+  //   //roadmap
+  // },
+  // {
+  //   id: "6",
+  //   title: "Noizy Merch",
+  //   url: "/noizy-merch",
+  //   //roadmap
+  // },
   {
-    id: "6",
+    id: "5",
     title: "Contact",
     url: "/contact",
     //onlyMobile: true,
     //sign-up
   },
   {
-    id: "7",
+    id: "6",
     title: "Sign in",
     url: "/login",
     onlyMobile: true,
@@ -279,6 +291,32 @@ export const events = [
   },
 ];
 
+export const albumPhotos = [
+  {
+    id: "1",
+    title: "Smilles",
+    url: "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    dateUploaded: "date uplodaded",
+  },
+  {
+    id: "2",
+    title: "Smilles",
+    url: "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    dateUploaded: "date uplodaded",
+  },
+  {
+    id: "3",
+    title: "Smilles",
+    url: "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    dateUploaded: "date uplodaded",
+  },
+  {
+    id: "4",
+    title: "Smilles",
+    url: "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    dateUploaded: "date uplodaded",
+  },
+];
 export const socials = [
   {
     id: "0",

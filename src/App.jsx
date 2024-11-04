@@ -3,12 +3,15 @@ import ButtonGradient from "./assets/svg/ButtonGradient";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Events from "./components/Events";
-import Membership from "./components/Membership";
+// import Membership from "./components/Membership";
 import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
 import Playlist from "./pages/Playlist";
 import Footer from "./components/Footer";
+import NoizyMerch from "./pages/NoizyMerch";
+import NoizyMarketplace from "./pages/NoizyMarketplace";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -23,7 +26,7 @@ const App = () => {
                 <Header />
                 <Hero />
                 <Events />
-                <Membership />
+                {/* <Membership /> */}
                 <Footer />
               </>
             }
@@ -33,6 +36,9 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/album" element={<Album />} />
           <Route path="/playlist" element={<Playlist />} />
+          <Route path="/noizy-merch" element={<NoizyMerch />} />
+          <Route path="/noizy-marketplace" element={<NoizyMarketplace />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
       <ButtonGradient />
