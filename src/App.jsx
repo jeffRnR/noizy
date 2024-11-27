@@ -3,7 +3,7 @@ import ButtonGradient from "./assets/svg/ButtonGradient";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Events from "./components/Events";
-// import Membership from "./components/Membership";
+import Membership from "./components/Membership";
 import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
@@ -26,7 +26,7 @@ const App = () => {
                 <Header />
                 <Hero />
                 <Events />
-                {/* <Membership /> */}
+                <Membership />
                 <Footer />
               </>
             }
