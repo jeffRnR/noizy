@@ -45,27 +45,27 @@ const PhotoCard = () => {
       transition: "overflow 10s ease-in-out",
     },
     gridContainer: {
-      display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      // display: "grid",
+      // gridTemplateColumns: "repeat(3, 1fr)",
       gap: "0.5rem",
       padding: "0",
       width: "100%",
     },
   };
 
-  // Responsive styles for grid view
-  const updateGridTemplateColumns = () => {
-    const width = window.innerWidth;
-    if (width >= 1024) {
-      return "repeat(5, 1fr)";
-    } else if (width >= 768) {
-      return "repeat(4, 1fr)";
-    } else if (width >= 640) {
-      return "repeat(3, 1fr)";
-    } else {
-      return "repeat(2, 1fr)";
-    }
-  };
+  //Responsive styles for grid view
+  // const updateGridTemplateColumns = () => {
+  //   const width = window.innerWidth;
+  //   if (width >= 1024) {
+  //     return "repeat(5, 1fr)";
+  //   } else if (width >= 768) {
+  //     return "repeat(4, 1fr)";
+  //   } else if (width >= 640) {
+  //     return "repeat(3, 1fr)";
+  //   } else {
+  //     return "repeat(2, 1fr)";
+  //   }
+  // };
 
   return (
     <div className="flex flex-col items-center gap-2 ">
@@ -83,7 +83,11 @@ const PhotoCard = () => {
       <div
         ref={scrollContainer}
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
-        className={`w-full max-w-[80%] mx-auto ${isGridView ? "" : "flex"} `}
+        className={`w-full max-w-[80%] mx-auto${
+          isGridView
+            ? " grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 w-full max-w-[20rem]"
+            : "flex"
+        } `}
       >
         {albumPhotos.map((item) => (
           <div
@@ -91,7 +95,7 @@ const PhotoCard = () => {
             className={`snap-center ${
               isGridView
                 ? "w-full rounded-0 px-0  grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3"
-                : "w-[80%] px-[2]"
+                : "w-[80%] px-[2] "
             } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full h-[80%]  flex-shrink-0 relative group`}
           >
             <img

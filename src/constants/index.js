@@ -42,6 +42,7 @@ import {
   noizy_3,
   noizy_2,
 } from "../assets";
+import Terms from "../pages/Terms";
 
 export const navigation = [
   {
@@ -329,5 +330,31 @@ export const socials = [
     title: "Twitter",
     iconUrl: twitter,
     url: "https://twitter.com/noizynightke",
+  },
+];
+export const terms = [
+  {
+    id: "1",
+    term: "Term 1",
+  },
+  {
+    id: "2",
+    term: "Term 2",
+  },
+  {
+    id: "3",
+    term: "Term 3",
+  },
+  {
+    id: "4",
+    term: "Term 4",
+  },
+  {
+    id: "5",
+    term: "Term 5",
+  },
+  {
+    id: "6",
+    term: "Term 6",
   },
 ];

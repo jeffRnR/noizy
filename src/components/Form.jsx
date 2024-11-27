@@ -1,14 +1,14 @@
 import React from "react";
 import Button from "../components/Button";
 
-const Form = () => {
+const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
   return (
     <div className="flex gap-[1rem] max-lg:flex-wrap justify-center mt-4">
       <div
         className="min-w-[90vw] max-w-[90vw] lg:min-w-[50vw] lg:max-w-[50vw] h-full px-6 bg-n-8 border-2 
           border-color-7 rounded-[2rem]  py-4 "
       >
-        <h4 className="h4 mb-4">Submit A Message</h4>
+        <h4 className="h4 mb-4">{title}</h4>
         <div className="flex flex-col  h-auto mb-6">
           <form className="">
             <div className="flex flex-col gap-2 ">
@@ -47,8 +47,13 @@ const Form = () => {
                 className="w-auto h-[8rem] p-4 rounded-[0.5rem] bg-transparent border-2 border-color-7 mb-2 text-start outline-none align-top"
               />
             </div>
-            <Button className="w-full my-4" href="">
-              Submit
+            <Button
+              className="w-full my-4"
+              href={buttonLink}
+              n
+              onClick={buttonFunction}
+            >
+              {buttonTitle}
             </Button>
           </form>
         </div>
