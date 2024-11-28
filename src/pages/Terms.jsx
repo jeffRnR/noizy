@@ -61,7 +61,6 @@ const Terms = () => {
               buttonTitle="Submit"
               buttonLink=""
               id="submitForm"
-              buttonFunction={submitForm}
             />
           </div>
         )}

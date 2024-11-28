@@ -2,6 +2,30 @@ import React from "react";
 import Button from "../components/Button";
 
 const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
+  const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "9744bc3a-44a3-4502-a507-22bb7c70c2a2");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
   return (
     <div className="flex gap-[1rem] max-lg:flex-wrap justify-center mt-4">
       <div
@@ -10,7 +34,7 @@ const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
       >
         <h4 className="h4 mb-4">{title}</h4>
         <div className="flex flex-col  h-auto mb-6">
-          <form className="">
+          <form className="" onSubmit={onSubmit}>
             <div className="flex flex-col gap-2 ">
               <label for="name">Name</label>
               <input
@@ -50,11 +74,12 @@ const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
             <Button
               className="w-full my-4"
               href={buttonLink}
-              n
               onClick={buttonFunction}
+              type="submit"
             >
               {buttonTitle}
             </Button>
+            <span>{result}</span>
           </form>
         </div>
       </div>
