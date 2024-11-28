@@ -1,5 +1,6 @@
 import React from "react";
 import { playlist } from "../constants";
+import { FaPlay } from "react-icons/fa";
 
 const PlaylistCard = () => {
   return (
@@ -23,8 +24,8 @@ const PlaylistCard = () => {
               <div className="absolute bg-gradient-to-t from-black/10 via-black/60 to-black/100 inset-0 rounded-[2rem] "></div>
             </div>
 
-            <div className="relative z-10 lg:flex sm:flex-col mb-6 items-end text-center justify-end w-full flex-wrap h-full">
-              <div className="p-8 md:p-12 lg:p-16 items-baseline text-center justify-end">
+            <div className="relative z-10 flex flex-col items-center text-center justify-between w-full flex-wrap h-full">
+              <div className="p-2 lg:p-4 items-baseline text-center justify-end">
                 <p className="text-n-1/75 text-sm font-semibold">
                   {item.title}
                 </p>
@@ -32,6 +33,9 @@ const PlaylistCard = () => {
                 {/* <p className="text-n-1/50 text-sm">
                   Uploaded on: {item.releaseDate}
                 </p> */}
+              </div>
+              <div className="text-center items-center py-2">
+                <FaPlay size={20} className="text-color-4/75" />
               </div>
             </div>
           </a>
