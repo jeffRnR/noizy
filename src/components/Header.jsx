@@ -51,7 +51,7 @@ const Header = () => {
         >
           <div
             className="relative z-2 flex flex-col items-center 
-            justify-center m-auto lg:flex-row"
+            justify-center m-auto lg:flex-row overflow-y-auto h-full my-6"
           >
             {navigation.map((item) => (
               <Link
