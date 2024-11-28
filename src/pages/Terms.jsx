@@ -56,12 +56,7 @@ const Terms = () => {
 
         {formVisible && (
           <div className="min-w-[90vw] max-w-[90vw] lg:min-w-[50vw] lg:max-w-[50vw] overflow-hidden">
-            <Form
-              title="Submit a message"
-              buttonTitle="Submit"
-              buttonLink=""
-              id="submitForm"
-            />
+            <Form title="Submit a message" buttonLink="" id="submitForm" />
           </div>
         )}
       </Section>

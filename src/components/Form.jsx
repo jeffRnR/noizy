@@ -150,7 +150,7 @@ const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
               </div>
               <div className="flex flex-col gap-2">
                 <label for="message">Message</label>
-                <input
+                <textarea
                   id="message"
                   required
                   placeholder="write your message"
@@ -196,7 +196,6 @@ const Form = ({ title, buttonTitle, buttonLink, buttonFunction }) => {
                 ) : (
                   "Send Message"
                 )}
-                {buttonTitle}
               </Button>
             </form>
           )}

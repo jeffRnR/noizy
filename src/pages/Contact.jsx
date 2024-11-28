@@ -56,7 +56,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <Form title="Submit a message" buttonTitle="Submit" buttonLink="" />
+        <Form title="Submit a message" buttonLink="" />
       </Section>
       <Footer />
     </>
