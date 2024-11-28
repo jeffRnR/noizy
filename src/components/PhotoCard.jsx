@@ -74,8 +74,8 @@ const PhotoCard = () => {
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
         className={`${
           isGridView
-            ? "items-center justify-center" // Added classes to center the grid
-            : "flex my-2 overflow-auto" // Adjusted to ensure smooth scrolling
+            ? "items-center justify-center mx-6" // Added classes to center the grid
+            : "flex my-2 mx-6 overflow-auto" // Adjusted to ensure smooth scrolling
         }`}
       >
         {albumPhotos.map((item) => (
@@ -84,7 +84,7 @@ const PhotoCard = () => {
             className={`snap-center ${
               isGridView
                 ? "flex-shrink-0 w-[calc(100%-0.2rem)]" // Ensured consistent width for grid view
-                : "flex-shrink-0 w-[calc(100%-5rem)]" // Adjusted width for non-grid view
+                : "flex-shrink-0 w-[calc(100%-8rem)]" // Adjusted width for non-grid view
             } relative group`}
           >
             <img
@@ -97,9 +97,10 @@ const PhotoCard = () => {
             />
             <a
               href={item.url}
-              download
+              download={item.title}
               className="absolute bottom-4 right-4 bg-color-7/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               title="Download"
+              target="_blank"
             >
               <FaDownload size={20} />
             </a>

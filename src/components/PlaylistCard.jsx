@@ -4,12 +4,12 @@ import { FaPlay } from "react-icons/fa";
 
 const PlaylistCard = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {playlist.map((item) => (
         <div
           key={item.id}
           className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 border-[1.5px]
-        border-color-7 rounded-[2rem] overflow-clip my-6 relative"
+        border-color-7 rounded-[2rem] overflow-clip relative"
         >
           <a
             href={item.spotifyUrl}
@@ -26,10 +26,12 @@ const PlaylistCard = () => {
 
             <div className="relative z-10 flex flex-col items-center text-center justify-between w-full flex-wrap h-full">
               <div className="p-2 lg:p-4 items-baseline text-center justify-end">
-                <p className="text-n-1/75 text-sm font-semibold">
+                <p className="text-n-1/75 text-sm font-semibold font-orbitron">
                   {item.title}
                 </p>
-                <p className="text-n-1/50 text-xs">{item.event}</p>
+                <p className="text-n-1/50 text-[8px] font-orbitron">
+                  {item.event}
+                </p>
                 {/* <p className="text-n-1/50 text-sm">
                   Uploaded on: {item.releaseDate}
                 </p> */}
