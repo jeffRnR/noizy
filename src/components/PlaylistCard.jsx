@@ -1,6 +1,7 @@
 import React from "react";
 import { playlist } from "../constants";
 import { FaPlay } from "react-icons/fa";
+import { spotify } from "../assets";
 
 const PlaylistCard = () => {
   return (
@@ -37,7 +38,8 @@ const PlaylistCard = () => {
                 </p> */}
               </div>
               <div className="text-center items-center py-2">
-                <FaPlay size={30} className="text-color-4/75" />
+                {/* <FaPlay size={30} className="text-color-4/75" /> */}
+                <img src={spotify} alt="Spotify" height={30} width={30} />
               </div>
             </div>
           </a>

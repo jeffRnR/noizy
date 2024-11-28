@@ -78,6 +78,7 @@ import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
+import spotify from "./spotify.png";
 
 export {
   brainwave,
@@ -152,4 +153,5 @@ export {
   noizy_1,
   noizy_2,
   noizy_3,
+  spotify,
 };
