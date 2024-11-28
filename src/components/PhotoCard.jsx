@@ -9,47 +9,50 @@ import {
 } from "react-icons/fa";
 
 const PhotoCard = () => {
-  const [isGridView, setIsGridView] = useState(false);
-  const scrollContainer = useRef(null);
+  const [isGridView, setIsGridView] = useState(false); // State to toggle between grid and scroll view
+  const scrollContainer = useRef(null); // Ref for the scrollable container
 
+  // Scroll to the next photo in non-grid view
   const scrollNext = () => {
     if (scrollContainer.current) {
-      const photoWidth = scrollContainer.current.firstChild.clientWidth;
+      const photoWidth = scrollContainer.current.firstChild.offsetWidth;
       scrollContainer.current.scrollBy({
-        left: photoWidth,
+        left: photoWidth + 8,
         behavior: "smooth",
       });
     }
   };
 
+  // Scroll to the previous photo in non-grid view
   const scrollPrevious = () => {
     if (scrollContainer.current) {
-      const photoWidth = scrollContainer.current.firstChild.clientWidth;
+      const photoWidth = scrollContainer.current.firstChild.offsetWidth;
       scrollContainer.current.scrollBy({
-        left: -photoWidth,
+        left: -(photoWidth + 8),
         behavior: "smooth",
       });
     }
   };
 
+  // Styles for the scroll and grid containers
   const styles = {
     scrollContainer: {
       display: "flex",
-      overflowX: isGridView ? "hidden" : "scroll",
+      overflowX: "auto", // Changed from "scroll" to "auto" for consistency
       gap: "0.5rem",
       scrollSnapType: "x mandatory",
       scrollBehavior: "smooth",
-      msOverflowStyle: "none",
-      scrollbarWidth: "none",
-      // padding: "0 0.5rem",
-      // transition: "overflow 10s ease-in-out",
+      msOverflowStyle: "none", // Hide scrollbar for IE
+      scrollbarWidth: "none", // Hide scrollbar for Firefox
+      padding: "0.5rem", // Added padding to prevent cropping of the first image
     },
     gridContainer: {
-      // display: "grid",
-      // gridTemplateColumns: "repeat(3, 1fr)",
-      // gap: "0.5rem",
-      // padding: "0",
-      // width: "100%",
+      // Center the grid and ensure proper alignment
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))", // Dynamically adjust columns
+      gap: "0.25rem",
+      width: "80%", // Set container width to ensure centering
+      margin: "0 auto", // Center the grid container
     },
   };
 
@@ -69,30 +72,29 @@ const PhotoCard = () => {
       <div
         ref={scrollContainer}
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
-        className={`w-[90%] items-center justify-center mx-auto${
+        className={`${
           isGridView
-            ? " grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4  w-[90%] gap-2 items-center"
-            : "flex my-2"
-        } `}
+            ? "items-center justify-center" // Added classes to center the grid
+            : "flex my-2 overflow-auto" // Adjusted to ensure smooth scrolling
+        }`}
       >
         {albumPhotos.map((item) => (
           <div
             key={item.id}
             className={`snap-center ${
               isGridView
-                ? "min-w-[8rem] sm:min-w-[8rem] md:min-w-[10rem] lg:min-w-[12rem] rounded-0 px-0 relative"
-                : "w-full p-[2] h-[80%]"
-            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] h-[80%] lg:h-full flex-shrink-0 relative group`}
+                ? "flex-shrink-0 w-[calc(100%-0.2rem)]" // Ensured consistent width for grid view
+                : "flex-shrink-0 w-[calc(100%-5rem)]" // Adjusted width for non-grid view
+            } relative group`}
           >
             <img
               src={item.url}
               alt={item.title}
               className={`${
                 isGridView ? "rounded-0" : "rounded-[2rem]"
-              } h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
-              style={{ filter: "brightness(0.8)" }}
+              } w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
+              style={{ filter: "brightness(0.8)" }} // Uniform brightness filter
             />
-
             <a
               href={item.url}
               download
