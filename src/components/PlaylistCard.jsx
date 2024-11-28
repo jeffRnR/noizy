@@ -8,7 +8,7 @@ const PlaylistCard = () => {
       {playlist.map((item) => (
         <div
           key={item.id}
-          className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full bg-n-8 border-[1.5px]
+          className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 border-[1.5px]
         border-color-7 rounded-[2rem] overflow-clip my-6 relative"
         >
           <a
@@ -35,7 +35,7 @@ const PlaylistCard = () => {
                 </p> */}
               </div>
               <div className="text-center items-center py-2">
-                <FaPlay size={20} className="text-color-4/75" />
+                <FaPlay size={30} className="text-color-4/75" />
               </div>
             </div>
           </a>
