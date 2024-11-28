@@ -82,7 +82,7 @@ const PhotoCard = () => {
               isGridView
                 ? "min-w-[8rem] sm:min-w-[8rem] md:min-w-[10rem] lg:min-w-[12rem] rounded-0 px-0 relative"
                 : "w-full p-[2] "
-            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full md:h-[90%]  flex-shrink-0 relative group`}
+            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full md:h-[90%] h-[80%]  flex-shrink-0 relative group`}
           >
             <img
               src={item.url}
