@@ -71,7 +71,7 @@ const PhotoCard = () => {
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
         className={`w-[90%] items-center justify-center mx-auto${
           isGridView
-            ? " grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4  w-full gap-2 items-center"
+            ? " grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4  w-[90%] gap-2 items-center"
             : "flex my-2"
         } `}
       >
@@ -88,7 +88,7 @@ const PhotoCard = () => {
               src={item.url}
               alt={item.title}
               className={`${
-                isGridView ? "rounded-0 w-[90%]" : "rounded-[2rem]"
+                isGridView ? "rounded-0" : "rounded-[2rem]"
               } h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
               style={{ filter: "brightness(0.8)" }}
             />
