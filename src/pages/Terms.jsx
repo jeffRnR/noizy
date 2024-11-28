@@ -19,7 +19,7 @@ const Terms = () => {
   return (
     <>
       <Header />
-      <Section>
+      <Section id="terms">
         <Heading
           title="Terms and Conditions"
           tag="What we go by"

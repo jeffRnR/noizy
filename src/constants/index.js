@@ -358,3 +358,36 @@ export const terms = [
     term: "Term 6",
   },
 ];
+
+export const playlist = [
+  {
+    id: "0",
+    title: "All Rage",
+    coverArt:
+      "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    event: "Noizy Night 1.1",
+    spotifyUrl:
+      "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
+    releaseDate: "29/11/2024",
+  },
+  {
+    id: "1",
+    title: "Kids are sleeping",
+    coverArt:
+      "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    event: "Noizy Night 1.1",
+    spotifyUrl:
+      "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
+    releaseDate: "29/11/2024",
+  },
+  {
+    id: "2",
+    title: "It's getting hot",
+    coverArt:
+      "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
+    event: "Noizy Night 1.1",
+    spotifyUrl:
+      "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
+    releaseDate: "29/11/2024",
+  },
+];

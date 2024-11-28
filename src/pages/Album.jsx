@@ -17,14 +17,14 @@ const Album = () => {
             tag="Let's get nostalgic"
             className="text-center"
           />
-          <div className="relative">
-            <LeftLine />
-            <RightLine />
-          </div>
         </div>
       </Section>
 
-      <Section>
+      <Section className="flex justify-center items-center gap-2 flex-col flex-wrap">
+        <div>
+          <LeftLine />
+          <RightLine />
+        </div>
         <PhotoCard />
       </Section>
       <Footer />

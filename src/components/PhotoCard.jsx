@@ -41,34 +41,20 @@ const PhotoCard = () => {
       scrollBehavior: "smooth",
       msOverflowStyle: "none",
       scrollbarWidth: "none",
-      padding: "0 0.5rem",
-      transition: "overflow 10s ease-in-out",
+      // padding: "0 0.5rem",
+      // transition: "overflow 10s ease-in-out",
     },
     gridContainer: {
       // display: "grid",
       // gridTemplateColumns: "repeat(3, 1fr)",
-      gap: "0.5rem",
-      padding: "0",
-      width: "100%",
+      // gap: "0.5rem",
+      // padding: "0",
+      // width: "100%",
     },
   };
 
-  //Responsive styles for grid view
-  // const updateGridTemplateColumns = () => {
-  //   const width = window.innerWidth;
-  //   if (width >= 1024) {
-  //     return "repeat(5, 1fr)";
-  //   } else if (width >= 768) {
-  //     return "repeat(4, 1fr)";
-  //   } else if (width >= 640) {
-  //     return "repeat(3, 1fr)";
-  //   } else {
-  //     return "repeat(2, 1fr)";
-  //   }
-  // };
-
   return (
-    <div className="flex flex-col items-center gap-2 ">
+    <div className="flex flex-col items-center">
       {/* Toggle Button */}
       <div className="mb-4 items-center justify-center">
         <button
@@ -83,10 +69,10 @@ const PhotoCard = () => {
       <div
         ref={scrollContainer}
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
-        className={`w-full max-w-[80%] mx-auto${
+        className={`w-[90%] items-center justify-center mx-auto${
           isGridView
-            ? " grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 w-full max-w-[20rem]"
-            : "flex"
+            ? " grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4  w-full gap-2 items-center"
+            : "flex my-2"
         } `}
       >
         {albumPhotos.map((item) => (
@@ -94,15 +80,15 @@ const PhotoCard = () => {
             key={item.id}
             className={`snap-center ${
               isGridView
-                ? "w-full rounded-0 px-0  grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3"
-                : "w-[80%] px-[2] "
-            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full h-[80%]  flex-shrink-0 relative group`}
+                ? "min-w-[8rem] sm:min-w-[8rem] md:min-w-[10rem] lg:min-w-[12rem] rounded-0 px-0 relative"
+                : "w-full p-[2] "
+            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full md:h-[90%]  flex-shrink-0 relative group`}
           >
             <img
               src={item.url}
               alt={item.title}
               className={`${
-                isGridView ? "rounded-0" : "rounded-[2rem]"
+                isGridView ? "rounded-0 w-full" : "rounded-[2rem]"
               } w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
               style={{ filter: "brightness(0.8)" }}
             />
