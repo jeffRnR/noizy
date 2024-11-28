@@ -49,51 +49,43 @@ export const navigation = [
     id: "0",
     title: "Home",
     url: "/",
-    //feautres
   },
   {
     id: "2",
     title: "Terms",
     url: "/terms",
-    //how-to-use
   },
   {
     id: "3",
     title: "Album",
     url: "/album",
-    //roadmap
   },
   {
     id: "4",
     title: "Playlist",
     url: "/playlist",
-    //roadmap
   },
   // {
   //   id: "5",
   //   title: "Noizy Marketplace",
   //   url: "/noizy-marketplace",
-  //   //roadmap
   // },
   // {
   //   id: "6",
   //   title: "Noizy Merch",
   //   url: "/noizy-merch",
-  //   //roadmap
   // },
   {
     id: "5",
     title: "Contact",
     url: "/contact",
-    //onlyMobile: true,
-    //sign-up
   },
-  {
-    id: "6",
-    title: "Sign in",
-    url: "/login",
-    onlyMobile: true,
-  },
+  // {
+  //   id: "6",
+  //   title: "Sign in",
+  //   url: "/login",
+  //   onlyMobile: true,
+  // },
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
