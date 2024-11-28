@@ -82,14 +82,14 @@ const PhotoCard = () => {
               isGridView
                 ? "min-w-[8rem] sm:min-w-[8rem] md:min-w-[10rem] lg:min-w-[12rem] rounded-0 px-0 relative"
                 : "w-full p-[2] "
-            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] lg:h-full h-[80%]  flex-shrink-0 relative group`}
+            } sm:w-1/2 lg:w-1/3 lg:max-w-[40rem] max-w-[20rem] h-[80%]  flex-shrink-0 relative group`}
           >
             <img
               src={item.url}
               alt={item.title}
               className={`${
                 isGridView ? "rounded-0 w-full" : "rounded-[2rem]"
-              } w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
+              } w-[90%] h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
               style={{ filter: "brightness(0.8)" }}
             />
 
