@@ -9,7 +9,7 @@ const PlaylistCard = () => {
       {playlist.map((item) => (
         <div
           key={item.id}
-          className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 border-[1.5px]
+          className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 
         border-color-7 rounded-[2rem] overflow-clip relative"
         >
           <a

@@ -9,10 +9,9 @@ import {
 } from "react-icons/fa";
 
 const PhotoCard = () => {
-  const [isGridView, setIsGridView] = useState(false); // State to toggle between grid and scroll view
-  const scrollContainer = useRef(null); // Ref for the scrollable container
+  const [isGridView, setIsGridView] = useState(false);
+  const scrollContainer = useRef(null);
 
-  // Scroll to the next photo in non-grid view
   const scrollNext = () => {
     if (scrollContainer.current) {
       const photoWidth = scrollContainer.current.firstChild.offsetWidth;
@@ -23,7 +22,6 @@ const PhotoCard = () => {
     }
   };
 
-  // Scroll to the previous photo in non-grid view
   const scrollPrevious = () => {
     if (scrollContainer.current) {
       const photoWidth = scrollContainer.current.firstChild.offsetWidth;
@@ -34,25 +32,23 @@ const PhotoCard = () => {
     }
   };
 
-  // Styles for the scroll and grid containers
   const styles = {
     scrollContainer: {
       display: "flex",
-      overflowX: "auto", // Changed from "scroll" to "auto" for consistency
+      overflowX: "auto",
       gap: "0.5rem",
       scrollSnapType: "x mandatory",
       scrollBehavior: "smooth",
-      msOverflowStyle: "none", // Hide scrollbar for IE
-      scrollbarWidth: "none", // Hide scrollbar for Firefox
-      padding: "0.5rem", // Added padding to prevent cropping of the first image
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
+      padding: "0.5rem",
     },
     gridContainer: {
-      // Center the grid and ensure proper alignment
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))", // Dynamically adjust columns
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "0.25rem",
-      width: "80%", // Set container width to ensure centering
-      margin: "0 auto", // Center the grid container
+      width: "80%",
+      margin: "0 auto",
     },
   };
 
@@ -74,8 +70,8 @@ const PhotoCard = () => {
         style={isGridView ? styles.gridContainer : styles.scrollContainer}
         className={`${
           isGridView
-            ? "items-center justify-center mx-6" // Added classes to center the grid
-            : "flex my-2 mx-6 overflow-auto" // Adjusted to ensure smooth scrolling
+            ? "items-center justify-center mx-6"
+            : "flex my-2 mx-6 overflow-auto"
         }`}
       >
         {albumPhotos.map((item) => (
@@ -83,8 +79,8 @@ const PhotoCard = () => {
             key={item.id}
             className={`snap-center ${
               isGridView
-                ? "flex-shrink-0 w-[calc(100%-0.2rem)]" // Ensured consistent width for grid view
-                : "flex-shrink-0 w-[calc(100%-8rem)]" // Adjusted width for non-grid view
+                ? "flex-shrink-0 w-[calc(100%-0.2rem)]"
+                : "flex-shrink-0 w-[calc(100%-5rem)] lg:max-w-[20rem] md:max-w-[18rem] max-w-[12rem]"
             } relative group`}
           >
             <img
@@ -93,8 +89,19 @@ const PhotoCard = () => {
               className={`${
                 isGridView ? "rounded-0" : "rounded-[2rem]"
               } w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
-              style={{ filter: "brightness(0.8)" }} // Uniform brightness filter
+              style={{
+                filter: "brightness(0.6) contrast(1)",
+                transition: "filter 0.7s ease-in-out",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.filter =
+                  "brightness(0.8) contrast(1.2) ")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.filter = "brightness(0.6) contrast(1) ")
+              }
             />
+
             <a
               href={item.url}
               download={item.title}
