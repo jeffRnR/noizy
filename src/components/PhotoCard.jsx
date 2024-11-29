@@ -45,7 +45,7 @@ const PhotoCard = () => {
     },
     gridContainer: {
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(10rem, 1fr))",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "0.25rem",
       width: "80%",
       margin: "0 auto",
