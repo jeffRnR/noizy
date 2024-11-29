@@ -53,9 +53,9 @@ const PhotoCard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center transition-all duration-700 ease-in-out">
       {/* Toggle Button */}
-      <div className="mb-4 items-center justify-center">
+      <div className="mb-4 items-center justify-center transition-all duration-700 ease-in-out">
         <button
           onClick={() => setIsGridView(!isGridView)}
           className="bg-color-7/50 hover:bg-color-7/70 p-4 text-white rounded-[2rem] flex items-center transition-all ease-in-out duration-300"
@@ -72,7 +72,7 @@ const PhotoCard = () => {
           isGridView
             ? "items-center justify-center mx-6"
             : "flex my-2 mx-6 overflow-auto"
-        }`}
+        } transition-all duration-700 ease-in-out`}
       >
         {albumPhotos.map((item) => (
           <div
