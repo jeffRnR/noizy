@@ -79,8 +79,8 @@ const PhotoCard = () => {
             key={item.id}
             className={`snap-center ${
               isGridView
-                ? "flex-shrink-0 w-[calc(100%-0.2rem)] animate-slideUp"
-                : "flex-shrink-0 w-[calc(100%-5rem)] lg:max-w-[20rem] md:max-w-[18rem] max-w-[12rem] animate-slideLeft"
+                ? "flex-shrink-0 w-[calc(100%-0.2rem)]"
+                : "flex-shrink-0 w-[calc(100%-5rem)] lg:max-w-[20rem] md:max-w-[18rem] max-w-[12rem]"
             } relative group transition-all duration-700 ease-in-out `}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
