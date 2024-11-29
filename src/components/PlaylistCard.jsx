@@ -1,16 +1,16 @@
 import React from "react";
 import { playlist } from "../constants";
-import { FaPlay } from "react-icons/fa";
 import { spotify } from "../assets";
 
 const PlaylistCard = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {playlist.map((item) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-700 ease-in-out">
+      {playlist.map((item, index) => (
         <div
           key={item.id}
-          className=" min-w-[18rem] lg:min-w-[22rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 
-        border-color-7 rounded-[2rem] overflow-clip relative"
+          className=" min-w-[18rem] lg:min-w-[20rem] md:min-w-[20rem] h-full md:max-h-[8rem] lg:max-h-[12rem] max-h-[8rem] bg-n-8 
+        border-color-7 rounded-[2rem] overflow-clip relative animate-slideUp"
+          style={{ animationDelay: `${index * 0.1}s` }}
         >
           <a
             href={item.spotifyUrl}

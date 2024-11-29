@@ -45,7 +45,7 @@ const PhotoCard = () => {
     },
     gridContainer: {
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gridTemplateColumns: "repeat(auto-fill, minmax(10rem, 1fr))",
       gap: "0.25rem",
       width: "80%",
       margin: "0 auto",
@@ -55,7 +55,7 @@ const PhotoCard = () => {
   return (
     <div className="flex flex-col items-center transition-all duration-700 ease-in-out">
       {/* Toggle Button */}
-      <div className="mb-4 items-center justify-center transition-all duration-700 ease-in-out">
+      <div className="mb-4 items-center justify-center">
         <button
           onClick={() => setIsGridView(!isGridView)}
           className="bg-color-7/50 hover:bg-color-7/70 p-4 text-white rounded-[2rem] flex items-center transition-all ease-in-out duration-300"
@@ -74,24 +74,25 @@ const PhotoCard = () => {
             : "flex my-2 mx-6 overflow-auto"
         } transition-all duration-700 ease-in-out`}
       >
-        {albumPhotos.map((item) => (
+        {albumPhotos.map((item, index) => (
           <div
             key={item.id}
             className={`snap-center ${
               isGridView
-                ? "flex-shrink-0 w-[calc(100%-0.2rem)]"
-                : "flex-shrink-0 w-[calc(100%-5rem)] lg:max-w-[20rem] md:max-w-[18rem] max-w-[12rem]"
-            } relative group`}
+                ? "flex-shrink-0 w-[calc(100%-0.2rem)] animate-slideUp"
+                : "flex-shrink-0 w-[calc(100%-5rem)] lg:max-w-[20rem] md:max-w-[18rem] max-w-[12rem] animate-slideLeft"
+            } relative group transition-all duration-700 ease-in-out `}
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
             <img
               src={item.url}
               alt={item.title}
               className={`${
                 isGridView ? "rounded-0" : "rounded-[2rem]"
-              } w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:filter-none hover:cursor-pointer hover:p-2`}
+              } w-full h-full object-cover duration-700 ease-in-out hover:cursor-pointer hover:scale-95 transition-all`}
               style={{
                 filter: "brightness(0.6) contrast(1)",
-                transition: "filter 0.7s ease-in-out",
+                // transition: "filter 0.7s ease-in-out",
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.filter =
@@ -105,7 +106,7 @@ const PhotoCard = () => {
             <a
               href={item.url}
               download={item.title}
-              className="absolute bottom-4 right-4 bg-color-7/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              className="absolute bottom-4 right-4 bg-color-7/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
               title="Download"
               target="_blank"
             >

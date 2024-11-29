@@ -84,6 +84,24 @@ export default {
         "benefit-card-5": "url(assets/benefits/card-5.svg)",
         "benefit-card-6": "url(assets/benefits/card-6.svg)",
       },
+      keyframes: {
+        slideUp: {
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideLeft: {
+          "0%": { transform: "translateX(-50px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+      },
+      animation: {
+        slideUp: "slideUp 0.7s ease-out",
+        slideLeft: "slideUp 0.7s ease-out forwards",
+      },
+    },
+    transitionProperty: {
+      padding: "padding",
+      filter: "filter",
     },
   },
   plugins: [
