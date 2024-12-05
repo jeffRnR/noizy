@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Events from "./components/Events";
 import Membership from "./components/Membership";
+import MembershipPayment from "./pages/MembershipPayment";
 import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
@@ -34,6 +35,7 @@ const App = () => {
           />
           {/* Route for Ticket Purchase */}
           <Route path="/purchase/:eventId" element={<TicketPurchase />} />
+          <Route path="/membershipPayment" element={<MembershipPayment />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/album" element={<Album />} />
           <Route path="/playlist" element={<Playlist />} />

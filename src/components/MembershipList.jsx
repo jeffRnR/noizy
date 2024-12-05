@@ -41,11 +41,10 @@ const MembershipList = () => {
 
           <Button
             className="w-full mb-6"
-            href="/payment"
             id="membershipPayment"
             // white={!!item.oneOffPrice}
           >
-            Get Started
+            <Link to={`/membershipPayment/`}>Get Started</Link>
           </Button>
           <ul>
             {item.features.map((feature, index) => (
