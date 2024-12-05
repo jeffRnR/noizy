@@ -44,6 +44,13 @@ import {
 } from "../assets";
 import Terms from "../pages/Terms";
 
+const generateRandomHexId = (length = 8) => {
+  return "0x" + Math.random().toString(16).substr(2, length);
+};
+
+// Example usage:
+const randomId = generateRandomHexId();
+
 export const navigation = [
   {
     id: "0",
@@ -273,7 +280,7 @@ export const events = [
     ],
   },
   {
-    id: "1",
+    id: randomId,
     title: "Noizy Night 1.2",
     venue: "Undecided",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
