@@ -227,9 +227,9 @@ export const pricing = [
     id: "0",
     title: "Membership",
     description:
-      "The membership fee includes a one off payment of KES 7500 and a monthly subscription of 150",
-    oneOffPrice: "7500",
-    monthlyPrice: "150",
+      "The membership fee includes a one off payment of KES 9500 and a monthly subscription of 150",
+    oneOffPrice: "9500",
+    monthlyPrice: "250",
     features: [
       "Exclussive merch",
       "Exclussive events",
