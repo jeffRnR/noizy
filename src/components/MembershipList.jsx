@@ -41,12 +41,10 @@ const MembershipList = () => {
 
           <Button
             className="w-full mb-6"
-            href={
-              item.oneOffPrice ? "/pricing" : "mailto:noizynightke@gmail.com"
-            }
-            //white={!!item.oneOffPrice}
+            href="/payment"
+            // white={!!item.oneOffPrice}
           >
-            {item.oneOffPrice ? "Get started" : "Contact us"}
+            Get Started
           </Button>
           <ul>
             {item.features.map((feature, index) => (
