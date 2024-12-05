@@ -15,9 +15,9 @@ const PlaylistCard = () => {
           <a
             href={item.spotifyUrl}
             target="_blank"
-            className="transition-all duration-700 ease-in-out hover:cursor-pointer hover:p-2"
+            className="transition-all duration-700 ease-in-out hover:cursor-pointer hover:p-2 "
           >
-            <div className="absolute inset-0 w-full h-full">
+            <div className="absolute inset-0 w-full h-full transition-all duration-700 ease-in-out hover:cursor-pointer hover:p-2">
               <div
                 className="absolute bg-cover bg-center inset-0 rounded-[2rem]"
                 style={{ backgroundImage: `url(${item.coverArt})` }}
