@@ -1,6 +1,7 @@
 import { check } from "../assets";
 import { pricing } from "../constants";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const MembershipList = () => {
   return (
