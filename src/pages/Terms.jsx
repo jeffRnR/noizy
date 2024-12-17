@@ -33,7 +33,10 @@ const Terms = () => {
         >
           <div className="flex flex-col min-h-[5.5rem] mb-6 items-center w-full px-2 flex-wrap overflow-auto transition-all duration-700 ease-in-out">
             {terms.map((item) => (
-              <ul className="py-2 w-full transition-all duration-700 ease-in-out">
+              <ul
+                key={item.id}
+                className="py-2 w-full transition-all duration-700 ease-in-out"
+              >
                 <li className="font-normal text-n-1/80 text-[1rem] sm:text-[1.25rem]">
                   <span className="text-[0.75rem] sm:text-[1rem] text-n-2 align-middle">
                     {item.id}

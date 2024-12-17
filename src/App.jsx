@@ -9,10 +9,12 @@ import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
 import Playlist from "./pages/Playlist";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import NoizyMerch from "./pages/NoizyMerch";
 import NoizyMarketplace from "./pages/NoizyMarketplace";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Dashboard from "./admin/pages/Dashboard";
 
 const App = () => {
   return (
@@ -29,7 +31,7 @@ const App = () => {
                 <Events />
                 <Membership />
                 <Playlist />
-                <Footer />
+                {/* <Footer /> */}
               </>
             }
           />
@@ -42,6 +44,8 @@ const App = () => {
           <Route path="/noizy-merch" element={<NoizyMerch />} />
           <Route path="/noizy-marketplace" element={<NoizyMarketplace />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin/:userId/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
       <ButtonGradient />

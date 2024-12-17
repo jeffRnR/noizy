@@ -78,9 +78,9 @@ const Header = () => {
           </div>
           <HamburgerMenu />
         </nav>
-        <Button className="hidden lg:flex" href="#login">
+        {/* <Button className="hidden lg:flex" href="/login">
           Sign In
-        </Button>
+        </Button> */}
         <Button
           className="ml-auto lg:hidden"
           px="px-3"

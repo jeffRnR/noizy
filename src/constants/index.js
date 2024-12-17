@@ -87,12 +87,12 @@ export const navigation = [
     title: "Contact",
     url: "/contact",
   },
-  // {
-  //   id: "6",
-  //   title: "Sign in",
-  //   url: "/login",
-  //   onlyMobile: true,
-  // },
+  {
+    id: "6",
+    title: "Sign in",
+    url: "/login",
+    // onlyMobile: true,
+  },
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
@@ -280,7 +280,7 @@ export const events = [
     ],
   },
   {
-    id: randomId,
+    id: "1",
     title: "Noizy Night 1.2",
     venue: "Undecided",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
