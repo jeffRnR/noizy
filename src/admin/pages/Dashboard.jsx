@@ -141,13 +141,13 @@ const Dashboard = () => {
       {dropdownVisible && (
         <div className="fixed z-50 right-0 top-24 mx-6 p-2 md:mx-6 lg:mx-10 w-40 gap-2 text-s border border-color-7 bg-n-8 rounded-2xl">
           <Button
-            className="w-full text-n-2 text-left px-4 py-2 transition-colors duration-700 ease-in-out hover:text-color-1 "
+            className="w-full text-n-1 text-left px-4 py-2 transition-colors duration-700 ease-in-out hover:text-color-1 "
             onClick={handleLogout}
           >
             Logout
           </Button>
           <button
-            className="w-full text-center p-2 bg-color-7/50 mt-4 text-n-2 rounded-md text-xs  transition-colors duration-700 ease-in-out hover:text-color-1"
+            className="w-full text-center p-2 bg-color-7/50 mt-4 text-n-1 rounded-md text-xs  transition-colors duration-700 ease-in-out hover:text-color-1"
             onClick={() => setDropdownVisible(false)}
           >
             Close
