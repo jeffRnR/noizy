@@ -126,7 +126,7 @@ const Dashboard = () => {
             {user && (
               <>
                 <div
-                  className="flex items-center gap-2 cursor-pointer"
+                  className="flex items-center gap-1 cursor-pointer"
                   onClick={() => setDropdownVisible(!dropdownVisible)}
                 >
                   <span className="w-7 h-7 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
