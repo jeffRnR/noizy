@@ -110,7 +110,7 @@ const Dashboard = () => {
     <Section className="pt-[4rem] pb-[2rem]" id="admin-dashboard">
       {/* Title Bar */}
       <div className="fixed left-0 top-0 w-full z-50 border-b border-n-6 bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out">
-        <div className="flex flex-row justify-between m-6 px-0 lg:px-7.5 xl:px-10 max-lg:py-4">
+        <div className="flex flex-row justify-between mx-6 my-2 px-0 lg:px-7.5 xl:px-10 max-lg:py-4">
           <div>
             <a href="/">
               <img
@@ -129,12 +129,14 @@ const Dashboard = () => {
                   className="flex items-center gap-2 cursor-pointer"
                   onClick={() => setDropdownVisible(!dropdownVisible)}
                 >
-                  <span className="w-8 h-8 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
+                  <span className="w-7 h-7 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
                     <i className="fa fa-user align-text-bottom"></i>
                   </span>
-                  <h1 className="text-lg text-n-1">{user.name}</h1>
+                  <h1 className="text-md text-n-1">{user.name}</h1>
                 </div>
-                <p className="text-xs text-right text-n-2">{user.labels}</p>
+                <p className="text-xs text-right font-grotesk text-n-2">
+                  {user.labels}
+                </p>
               </>
             )}
           </div>
