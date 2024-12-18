@@ -57,11 +57,11 @@ const Dashboard = () => {
   // If still loading, show loading state
   if (loading) {
     return (
-      <div className="items-center  justify-center align-middle">
+      <div className="items-center text-center justify-center align-middle">
         <img
           src={loading3}
           alt="Loading..."
-          className="items-center  justify-center align-middle"
+          className="items-center text-center  justify-center align-middle"
         />
       </div>
     );
@@ -109,8 +109,8 @@ const Dashboard = () => {
   return (
     <Section className="pt-[4rem] pb-[2rem]" id="admin-dashboard">
       {/* Title Bar */}
-      <div className="fixed left-0 top-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out">
-        <div className="flex flex-row justify-between m-6">
+      <div className="fixed left-0 top-0 w-full z-50 border-b border-n-6 bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out">
+        <div className="flex flex-row justify-between m-6 px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
           <div>
             <img
               src={noizy_logo}
@@ -130,16 +130,16 @@ const Dashboard = () => {
                   <span className="w-8 h-8 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
                     <i className="fa fa-user align-text-bottom"></i>
                   </span>
-                  <h1 className="text-lg text-n-2">{user.name}</h1>
+                  <h1 className="text-lg text-n-1">{user.name}</h1>
                 </div>
-                <p className="text-xs text-right text-n-2/50">{user.labels}</p>
+                <p className="text-xs text-right text-n-2">{user.labels}</p>
               </>
             )}
           </div>
         </div>
       </div>
       {dropdownVisible && (
-        <div className="fixed z-50 right-0 top-24 mx-4 p-2 md:mx-6 lg:mx-10 w-40 gap-2 text-s border border-color-7 bg-n-8 rounded-2xl">
+        <div className="fixed z-50 right-0 top-24 mx-6 p-2 md:mx-6 lg:mx-10 w-40 gap-2 text-s border border-color-7 bg-n-8 rounded-2xl">
           <Button
             className="w-full text-n-2 text-left px-4 py-2 transition-colors duration-700 ease-in-out hover:text-color-1 "
             onClick={handleLogout}

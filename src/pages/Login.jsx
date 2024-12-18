@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Client, Account, ID } from "appwrite";
+import React, { useState, useEffect } from "react";
+import { Client, Account } from "appwrite";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_ID, ENDPOINT } from "../../lib/appwrite.config";
 
@@ -28,13 +28,32 @@ const Login = () => {
     error: "",
   });
 
+  const navigate = useNavigate();
+
+  // Check for an existing session on component mount
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        // Get the current logged-in user
+        const user = await account.get();
+        const userId = user.$id;
+
+        // Redirect to user-specific dashboard
+        navigate(`/admin/${userId}/dashboard`);
+      } catch (error) {
+        // No active session; user will remain on the login page
+        console.log("No active session:", error);
+      }
+    };
+
+    checkSession();
+  }, [account, navigate]);
+
   // Input change handler
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const navigate = useNavigate();
 
   // Submit handler
   const handleSubmit = async (e) => {
@@ -55,12 +74,6 @@ const Login = () => {
 
       // Get the current logged-in user
       const user = await account.get();
-
-      // Sanitize and validate userId for routing
-      // const sanitizedUserId = user.$id
-      //   .replace(/[a-zA-Z0-9_.-]/g, "")
-      //   .slice(0, 36);
-
       const userId = user.$id;
 
       // Set successful login status
@@ -72,7 +85,6 @@ const Login = () => {
 
       // Navigate to user-specific dashboard
       navigate(`/admin/${userId}/dashboard`);
-      // await account.deleteSessions();
     } catch (error) {
       // Handle login errors
       console.error("Login error:", error);
