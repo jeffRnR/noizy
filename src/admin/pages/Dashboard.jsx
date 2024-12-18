@@ -132,9 +132,9 @@ const Dashboard = () => {
                   <span className="w-7 h-7 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
                     <i className="fa fa-user align-text-bottom"></i>
                   </span>
-                  <h1 className="text-md text-n-1">{user.name}</h1>
+                  <h1 className="text-sm text-n-1">{user.name}</h1>
                 </div>
-                <p className="text-xs text-right font-grotesk text-n-2">
+                <p className="text-xs text-right font-grotesk text-n-3">
                   {user.labels}
                 </p>
               </>
