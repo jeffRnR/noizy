@@ -110,15 +110,17 @@ const Dashboard = () => {
     <Section className="pt-[4rem] pb-[2rem]" id="admin-dashboard">
       {/* Title Bar */}
       <div className="fixed left-0 top-0 w-full z-50 border-b border-n-6 bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out">
-        <div className="flex flex-row justify-between m-6 px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
+        <div className="flex flex-row justify-between m-6 px-0 lg:px-7.5 xl:px-10 max-lg:py-4">
           <div>
-            <img
-              src={noizy_logo}
-              alt="Noizy Logo"
-              className="mr-4 rounded-full"
-              width={40}
-              height={40}
-            />
+            <a href="/">
+              <img
+                src={noizy_logo}
+                alt="Noizy Logo"
+                className="mr-4 rounded-full"
+                width={40}
+                height={40}
+              />
+            </a>
           </div>
           <div className="flex flex-col">
             {user && (
