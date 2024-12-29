@@ -5,7 +5,7 @@ import Section from "../../components/Section";
 import { noizy_logo, loading as loading3, loading1 } from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
-import { account } from "../../../lib/appwrite.config"; // Import account from your Appwrite setup
+import { account } from "../../../lib/appwrite.config";
 
 const Dashboard = () => {
   // Extract userId from URL parameters
