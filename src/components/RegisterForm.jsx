@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Client, Account, Databases } from "appwrite";
-import { useNavigate } from "react-router-dom"; // import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom";
 import {
   ENDPOINT,
   PROJECT_ID,
@@ -10,18 +10,16 @@ import {
 import Button from "./Button";
 
 const RegisterForm = ({ onBack }) => {
-  // Initialize the client
   const client = new Client();
   client.setEndpoint(ENDPOINT).setProject(PROJECT_ID);
 
-  // Initialize the services
   const account = new Account(client);
   const databases = new Databases(client);
-  const navigate = useNavigate(); // useNavigate instead of useRouter
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     contactName: "",
     email: "",
-    contactNumber: "+254", // Default to the Kenyan country code
+    contactNumber: "+254",
     brandName: "",
     password: "",
     confirmPassword: "",
@@ -34,6 +32,7 @@ const RegisterForm = ({ onBack }) => {
   const validate = () => {
     const newErrors = {};
     const phoneRegex = /^\+254\s?7[0-9]{8}$/;
+    const userIdRegex = /^[a-zA-Z][a-zA-Z0-9._-]{0,35}$/;
 
     if (!formData.contactName.trim())
       newErrors.contactName = "Contact Name is required";
@@ -55,7 +54,6 @@ const RegisterForm = ({ onBack }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    // Automatically add the Kenyan prefix (+254) to phone number input if missing
     if (name === "contactNumber" && !value.startsWith("+254")) {
       setFormData((prev) => ({
         ...prev,
@@ -75,36 +73,34 @@ const RegisterForm = ({ onBack }) => {
     setSuccessMessage("");
 
     try {
-      // Step 1: Create a user in the Auth system
       const user = await account.create(
         formData.email,
         formData.password,
-        "Guest"
+        formData.contactName
       );
-      console.log("user id : ", user);
 
-      // Step 3: Create a session for the user after registration
       await account.createEmailPasswordSession(
         formData.email,
         formData.password
       );
 
-      // Ensure the user ID is valid before passing it
       const userId = user.$id;
-      if (!/^[a-zA-Z0-9._-]{1,36}$/.test(userId)) {
-        throw new Error("Invalid user ID format.");
+      const userIdRegex = /^[a-zA-Z][a-zA-Z0-9._-]{0,35}$/;
+
+      if (!userIdRegex.test(userId)) {
+        throw new Error(
+          "Invalid user ID format. ID must start with a letter and contain only letters, numbers, periods, hyphens, or underscores (max 36 chars)."
+        );
       }
 
-      // Step 2: Store additional user data in the `guestBrands` collection
       await databases.createDocument(DATABASE_ID, GUESTBRANDS_COLLECTION_ID, {
-        userId: userId, // Use the validated userId
+        userId: userId,
         contactName: formData.contactName,
         email: formData.email,
         contactNumber: formData.contactNumber,
         brandName: formData.brandName,
       });
 
-      // Step 4: Redirect the user to their dashboard
       navigate(`/admin/${userId}/dashboard`);
 
       setSuccessMessage(
@@ -131,31 +127,31 @@ const RegisterForm = ({ onBack }) => {
   return (
     <div className="flex flex-col gap-[1rem] items-center">
       <h1 className="text-left">Register</h1>
-      <div className=" w-full min-w-[90vw] max-w-[90vw] lg:min-w-[50vw] lg:max-w-[50vw] h-full px-6 bg-n-8 border-2 border-color-7 rounded-[2rem] py-4">
+      <div className="w-full min-w-[90vw] max-w-[90vw] lg:min-w-[50vw] lg:max-w-[50vw] h-full px-6 bg-n-8 border-2 border-color-7 rounded-[2rem] py-4">
         <form onSubmit={handleSubmit} className="w-full">
           {[
-            "contactName",
-            "email",
-            "contactNumber",
-            "brandName",
-            "password",
-            "confirmPassword",
-          ].map((field) => (
-            <div key={field} className="flex flex-col gap-2 mb-4">
-              <label htmlFor={field} className="mb-1 capitalize">
-                {field.replace(/([A-Z])/g, " $1")}
+            { name: "contactName", type: "text" },
+            { name: "email", type: "email" },
+            { name: "contactNumber", type: "text" },
+            { name: "brandName", type: "text" },
+            { name: "password", type: "password" },
+            { name: "confirmPassword", type: "password" },
+          ].map(({ name, type }) => (
+            <div key={name} className="flex flex-col gap-2 mb-4">
+              <label htmlFor={name} className="mb-1 capitalize">
+                {name.replace(/([A-Z])/g, " $1")}
               </label>
               <input
-                id={field}
-                name={field}
-                type={field.includes("password") ? "password" : "text"}
-                placeholder={`Enter ${field.replace(/([A-Z])/g, " $1")}`}
-                value={formData[field]}
+                id={name}
+                name={name}
+                type={type}
+                placeholder={`Enter ${name.replace(/([A-Z])/g, " $1")}`}
+                value={formData[name]}
                 onChange={handleInputChange}
-                className=" h-[3rem] p-4 rounded-[0.5rem] bg-transparent border-2 border-color-7 outline-none"
+                className="h-[3rem] p-4 rounded-[0.5rem] bg-transparent border-2 border-color-7 outline-none"
               />
-              {errors[field] && (
-                <p className="text-red-500 text-sm">{errors[field]}</p>
+              {errors[name] && (
+                <p className="text-red-500 text-sm">{errors[name]}</p>
               )}
             </div>
           ))}
