@@ -12,7 +12,7 @@ const Contact = () => {
       <Header />
       <Section>
         <Heading
-          title="Noizy Night Contacts"
+          title="Noizy Nightz Contacts"
           tag="Let's Engage"
           className="text-center"
         />

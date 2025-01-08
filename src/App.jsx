@@ -15,6 +15,7 @@ import NoizyMarketplace from "./pages/NoizyMarketplace";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
           />
           {/* Route for Ticket Purchase */}
           <Route path="/purchase/:eventId" element={<TicketPurchase />} />
+          <Route path="/checkout/:eventId" element={<Checkout />} />
           <Route path="/membershipPayment" element={<MembershipPayment />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/album" element={<Album />} />

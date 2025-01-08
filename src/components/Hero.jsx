@@ -30,9 +30,8 @@ const Hero = () => {
          mb-[4rem] md:mb-20 lg:mb:[6rem]"
         >
           <h1 className="h1 mb-6">
-            The Goth Rave{" "}
             <span className="inline-block relative">
-              Noizy Night
+              Noizy Nightz
               {/* <img
                 src={curve}
                 className="absolute top-full left-0 w-full xl:-mt-2"
@@ -43,8 +42,7 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-xl mx-auto mb-6 text-n-2 lg:mb-8">
-            A gothic-themed event in Nairobi to celebrate opium rap and other
-            hiphop music sub-genres
+            An event platform in Nairobi to celebrate diverse music genres
           </p>
           <Button href="#events">Events</Button>
         </div>

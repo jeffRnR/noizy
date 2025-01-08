@@ -3,8 +3,8 @@
 import axios from "axios";
 
 // Replace these constants with your actual values
-const CONSUMER_KEY = "YOUR_CONSUMER_KEY";
-const CONSUMER_SECRET = "YOUR_CONSUMER_SECRET";
+const CONSUMER_KEY = process.env.VITE_MPESA_CONSUMER_KEY;
+const CONSUMER_SECRET = process.env.VITE_MPESA_CONSUMER_SECRET;
 const SHORTCODE = "YOUR_SHORTCODE"; // The shortcode for your business
 const LIPA_NA_MPESA_URL =
   "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"; // Use the sandbox URL for testing
@@ -48,7 +48,7 @@ export const processPayment = async (amount, phoneNumber) => {
     PhoneNumber: phoneNumber,
     CallBackURL: "https://example.com/callback", // Set your callback URL
     AccountReference: "NoizyNightTickets",
-    TransactionDesc: `Payment for Noizy Night tickets`,
+    TransactionDesc: `Payment for Noizy Nightz tickets`,
   };
 
   const response = await axios.post(LIPA_NA_MPESA_URL, payload, {

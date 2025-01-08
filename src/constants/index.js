@@ -249,7 +249,7 @@ export const pricing = [
 export const events = [
   {
     id: "0",
-    title: "Noizy Night 1.1",
+    title: "Noizy Nightz 1.1",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
     venue: "Undecided",
     dressCode: "Strictly Emo",
@@ -281,7 +281,7 @@ export const events = [
   },
   {
     id: "1",
-    title: "Noizy Night 1.2",
+    title: "Noizy Nightz 1.2",
     venue: "Undecided",
     date: "Sat 30th November, 2024 8pm - Sun 1st December, 2024 5am",
     backgroundUrl: benefitCard3,
@@ -364,7 +364,7 @@ export const playlist = [
     title: "All Rage",
     coverArt:
       "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
-    event: "Noizy Night 1.1",
+    event: "Noizy Nightz 1.1",
     spotifyUrl:
       "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
     releaseDate: "29/11/2024",
@@ -374,7 +374,7 @@ export const playlist = [
     title: "Kids are sleeping",
     coverArt:
       "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
-    event: "Noizy Night 1.1",
+    event: "Noizy Nightz 1.1",
     spotifyUrl:
       "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
     releaseDate: "29/11/2024",
@@ -384,7 +384,7 @@ export const playlist = [
     title: "It's getting hot",
     coverArt:
       "https://raw.githubusercontent.com/jeffRnR/images/refs/heads/main/pic.jpg",
-    event: "Noizy Night 1.1",
+    event: "Noizy Nightz 1.1",
     spotifyUrl:
       "https://open.spotify.com/playlist/1tR1IYefVcLNXS7gImzWk5?si=P-XdylI4RveGRU8yKpMoTQ&pi=Ive99ymPQQSK0",
     releaseDate: "29/11/2024",

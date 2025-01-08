@@ -120,7 +120,7 @@ const Login = () => {
       <Header />
       <Section>
         <Heading
-          title="Noizy Nights Admins"
+          title="Noizy Nightz Admins"
           tag="Login as an admin"
           className="text-center mt-4"
         />
