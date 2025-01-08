@@ -107,10 +107,10 @@ const TicketPurchase = () => {
                 {event.tickets.map((ticket) => (
                   <div key={ticket.id} className="mb-6">
                     <div
-                      className={`cursor-pointer p-4 rounded-lg border ${
+                      className={`cursor-pointer p-4 rounded-[0.5rem] border-2 border-color-1 ${
                         selectedTicket?.id === ticket.id
                           ? "border-color-1 bg-opacity-20 bg-color-1"
-                          : "border-gray-300"
+                          : "border-2 border-color-1"
                       }`}
                       onClick={() => setSelectedTicket(ticket)}
                     >
@@ -130,16 +130,15 @@ const TicketPurchase = () => {
                 {/* Quantity Selection */}
 
                 {selectedTicket && (
-                  <div className="mt-4">
-                    <label className="body-1 text-n-1/70 text-[0.75rem] sm:text-[1rem]">
-                      Number of Tickets:
-                      <input
-                        type="number"
-                        value={quantity}
-                        onChange={handleQuantityChange}
-                        className="ml-2 border-2 border-color-7 py-1 min-w-[5rem] px-2 text-n-1/80 bg-transparent rounded-lg transition-transform outline-none"
-                      />
-                    </label>
+                  <div className="mt-4 flex flex-col gap-2">
+                    <label>Number of Tickets:</label>
+                    <input
+                      type="number"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      className="border-2 w-full border-color-7 p-4 min-w-[5rem] text-n-1/80 bg-transparent rounded-[0.5rem] transition-transform outline-none"
+                    />
+
                     {errorMessage && (
                       <p className="text-red-500 text-sm mt-1">
                         {errorMessage}
@@ -149,31 +148,27 @@ const TicketPurchase = () => {
                 )}
 
                 {/* Phone Number Input */}
-                <div className="mt-4">
-                  <label className="body-1 text-n-1/70 text-[0.75rem] sm:text-[1rem]">
-                    Phone Number:
-                    <input
-                      type="tel"
-                      placeholder="Format: +254712345678"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="ml-2 border-2 border-color-7 p-1 text-n-1/80 bg-transparent rounded-lg outline-none"
-                    />
-                  </label>
+                <div className="mt-4 flex flex-col gap-2">
+                  <label>Phone Number: </label>
+                  <input
+                    type="tel"
+                    placeholder="Format: +254712345678"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="border-2 w-full border-color-7 p-4 text-n-1/80 bg-transparent rounded-[0.5rem] outline-none"
+                  />
                 </div>
 
                 {/* Email Input */}
-                <div className="mt-4">
-                  <label className="body-1 text-n-1/70 text-[0.75rem] sm:text-[1rem]">
-                    Email:
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="ml-2 border-2 border-color-7 p-1 text-n-1/80 bg-transparent rounded-lg outline-none"
-                    />
-                  </label>
+                <div className="mt-4 flex flex-col gap-2">
+                  <label>Email: </label>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border-2 border-color-7 p-4 text-n-1/80 bg-transparent rounded-[0.5rem] outline-none"
+                  />
                 </div>
 
                 {/* Proceed to Checkout Button */}
