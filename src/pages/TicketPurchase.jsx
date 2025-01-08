@@ -109,7 +109,7 @@ const TicketPurchase = () => {
                     <div
                       className={`cursor-pointer p-4 rounded-[0.5rem] border-2 border-color-7 ${
                         selectedTicket?.id === ticket.id
-                          ? "bg-opacity-20 border-color-4"
+                          ? "bg-opacity-20 border-color-4 bg-color-4"
                           : ""
                       }`}
                       onClick={() => setSelectedTicket(ticket)}
