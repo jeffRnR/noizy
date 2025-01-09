@@ -107,10 +107,10 @@ const TicketPurchase = () => {
                 {event.tickets.map((ticket) => (
                   <div key={ticket.id} className="mb-6">
                     <div
-                      className={`cursor-pointer p-4 rounded-[0.5rem] border-2 border-color-7 ${
+                      className={`cursor-pointer p-4 rounded-[0.5rem] border-2  ${
                         selectedTicket?.id === ticket.id
-                          ? "bg-opacity-20  bg-color-7"
-                          : ""
+                          ? "bg-opacity-40 bg-color-4 border-color-4"
+                          : "border-color-7"
                       }`}
                       onClick={() => setSelectedTicket(ticket)}
                     >
