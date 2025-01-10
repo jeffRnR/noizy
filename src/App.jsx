@@ -15,6 +15,7 @@ import NoizyMarketplace from "./pages/NoizyMarketplace";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
+import ManageEvents from "./admin/pages/ManageEvents";
 import Checkout from "./pages/Checkout";
 
 const App = () => {
@@ -48,6 +49,10 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin/:userId/dashboard" element={<Dashboard />} />
+          <Route
+            path="/admin/:userId/manage-events"
+            element={<ManageEvents />}
+          />
         </Routes>
       </div>
       <ButtonGradient />

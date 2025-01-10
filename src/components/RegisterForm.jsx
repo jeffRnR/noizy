@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Client, Account, Databases } from "appwrite";
+import { Client, Account, Databases, ID } from "appwrite";
 import { useNavigate } from "react-router-dom";
 import {
   ENDPOINT,
@@ -31,9 +31,7 @@ const RegisterForm = ({ onBack }) => {
 
   const validate = () => {
     const newErrors = {};
-    const phoneRegex = /^\+254\s?7[0-9]{8}$/;
-    const userIdRegex = /^[a-zA-Z][a-zA-Z0-9._-]{0,35}$/;
-
+    const phoneRegex = /^\+254[7-9][0-9]{8}$/;
     if (!formData.contactName.trim())
       newErrors.contactName = "Contact Name is required";
     if (!formData.email.includes("@"))
@@ -73,47 +71,65 @@ const RegisterForm = ({ onBack }) => {
     setSuccessMessage("");
 
     try {
+      // Step 1: Create user
+      console.log("Creating user...");
       const user = await account.create(
+        ID.unique(),
         formData.email,
         formData.password,
-        formData.contactName
+        formData.contactName,
+        { labels: ["guest"] }
       );
+      console.log("User created successfully:", user);
 
+      // Step 2: Create session
+      console.log("Creating session...");
       await account.createEmailPasswordSession(
         formData.email,
         formData.password
       );
+      console.log("Session created successfully");
 
-      const userId = user.$id;
-      const userIdRegex = /^[a-zA-Z][a-zA-Z0-9._-]{0,35}$/;
-
-      if (!userIdRegex.test(userId)) {
-        throw new Error(
-          "Invalid user ID format. ID must start with a letter and contain only letters, numbers, periods, hyphens, or underscores (max 36 chars)."
+      // Step 3: Store brand information - Let's try this separately
+      console.log("Attempting to store brand information...");
+      try {
+        const document = await databases.createDocument(
+          DATABASE_ID,
+          GUESTBRANDS_COLLECTION_ID,
+          ID.unique(),
+          {
+            userId: user.$id,
+            contactName: formData.contactName,
+            email: formData.email,
+            contactNumber: formData.contactNumber,
+            brandName: formData.brandName,
+          }
         );
+        console.log("Brand information stored successfully:", document);
+      } catch (dbError) {
+        console.error("Database error details:", {
+          error: dbError,
+          database: DATABASE_ID,
+          collection: GUESTBRANDS_COLLECTION_ID,
+          data: {
+            userId: user.$id,
+            contactName: formData.contactName,
+            email: formData.email,
+            contactNumber: formData.contactNumber,
+            brandName: formData.brandName,
+          },
+        });
+
+        // Even if database storage fails, we can still redirect to dashboard
+        // since the user is created and authenticated
+        console.warn("Proceeding with navigation despite database error");
       }
 
-      await databases.createDocument(DATABASE_ID, GUESTBRANDS_COLLECTION_ID, {
-        userId: userId,
-        contactName: formData.contactName,
-        email: formData.email,
-        contactNumber: formData.contactNumber,
-        brandName: formData.brandName,
-      });
-
-      navigate(`/admin/${userId}/dashboard`);
-
+      // Continue with navigation regardless of database success
       setSuccessMessage(
         "Registration successful! Redirecting to your dashboard..."
       );
-      setFormData({
-        contactName: "",
-        email: "",
-        contactNumber: "+254",
-        brandName: "",
-        password: "",
-        confirmPassword: "",
-      });
+      navigate(`/admin/${user.$id}/dashboard`);
     } catch (error) {
       console.error("Registration error:", error);
       setErrors({
