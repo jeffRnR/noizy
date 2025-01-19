@@ -1,81 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Client, Account, Databases, ID, Query } from "appwrite";
+import { useNavigate } from "react-router-dom";
+import { Client, Account } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
 import { noizy_logo, loading as loading3 } from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
-import {
-  ENDPOINT,
-  PROJECT_ID,
-  DATABASE_ID,
-  GUESTBRANDS_COLLECTION_ID,
-} from "../../../lib/appwrite.config";
+import { ENDPOINT, PROJECT_ID } from "../../../lib/appwrite.config";
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [brandData, setBrandData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const { userId } = useParams();
 
   // Initialize Appwrite
   const client = new Client().setEndpoint(ENDPOINT).setProject(PROJECT_ID);
-
   const account = new Account(client);
-  const databases = new Databases(client);
 
   useEffect(() => {
-    const fetchUserAndBrandData = async () => {
+    const fetchUser = async () => {
       try {
-        // Step 1: Fetch the authenticated user's data
         const currentUser = await account.get();
-        setUser(currentUser);
-
-        // Step 2: Query the brand data collection using the user's ID
-        const response = await databases.listDocuments(
-          DATABASE_ID,
-          GUESTBRANDS_COLLECTION_ID,
-          [
-            Query.equal("userId", [currentUser.$id]), // Using the correct user ID from Appwrite
-          ]
-        );
-
-        if (response.documents.length > 0) {
-          // Assuming the first document is the correct one for the user
-          const brand = response.documents[0];
-          setBrandData(brand);
-        } else {
-          setError("No brand data found for this user.");
+        if (!currentUser.labels.includes("admin")) {
+          // Redirect non-admin users to guest dashboard
+          navigate(`/guest-dashboard/${currentUser.$id}`);
+          return;
         }
+        setUser(currentUser);
       } catch (err) {
-        setError(`Error fetching brand data: ${err.message}`);
+        console.error("Error fetching user:", err);
+        navigate("/");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUserAndBrandData();
-  }, []);
-
-  // const fetchBrandData = async (userId) => {
-  //   try {
-  //     const response = await databases.getDocument(
-  //       DATABASE_ID,
-  //       GUESTBRANDS_COLLECTION_ID,
-  //       // [Query.equal("userId", userId)]
-  //       documentId
-  //       // userId // Ensure this matches the document ID
-  //     );
-  //     setBrandData(response);
-  //   } catch (error) {
-  //     console.error("Error fetching brand data:", error);
-  //   }
-  // };
+    fetchUser();
+  }, [navigate]);
 
   const handleLogout = async () => {
     try {
@@ -97,39 +60,6 @@ const Dashboard = () => {
       </div>
     );
   }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  // Card component to display metrics
-  // const Card = ({ title, link, value, icon, isRevenue }) => (
-  //   <Link
-  //     to={link}
-  //     className="relative mx-6 z-0 bg-n-8 rounded-xl shadow-lg hover:shadow-xl border-2 border-color-7 transition duration-300 ease-in-out px-6 py-4"
-  //   >
-  //     <div className="flex flex-col justify-between gap-4">
-  //       <div className="text-2xl text-color-1">
-  //         <span>{icon}</span>
-  //       </div>
-  //       <div className="flex flex-col justify-between w-full">
-  //         <h3 className="text-xl font-semibold mb-2">{title}</h3>
-  //         <span
-  //           className={`text-sm font-semibold mb-4 ${
-  //             isRevenue ? "text-color-4/85" : "text-color-2"
-  //           }`}
-  //         >
-  //           {isRevenue ? `KES ${value}` : value}
-  //         </span>
-  //       </div>
-  //     </div>
-  //     <div className="absolute top-0 right-0 p-3 text-white rounded-full">
-  //       <span>
-  //         <i className="fa fa-arrow-right"></i>
-  //       </span>
-  //     </div>
-  //   </Link>
-  // );
 
   return (
     <Section className="pt-[4rem] pb-[2rem]" id="admin-dashboard">
@@ -157,16 +87,10 @@ const Dashboard = () => {
                   <span className="w-7 h-7 items-center justify-items-center text-center justify-center align-middle text-n-2 rounded-full bg-color-7/50">
                     <i className="fa fa-user align-text-bottom"></i>
                   </span>
-                  <h1 className="text-sm text-n-1">
-                    {user.labels.includes("admin")
-                      ? user.name
-                      : user.name || "Guest User"}
-                  </h1>
+                  <h1 className="text-sm text-n-1">{user.name}</h1>
                 </div>
                 <p className="text-xs text-right font-grotesk text-n-3">
-                  {user.labels.includes("admin")
-                    ? "Admin"
-                    : brandData?.brandName}
+                  Admin
                 </p>
               </>
             )}
@@ -192,40 +116,40 @@ const Dashboard = () => {
       )}
 
       <Heading
-        title={`Welcome ${brandData?.brandName || "to Noizy Admin"}`}
+        title="Welcome to Noizy Admin"
         tag="One Stop to Manage Everything"
       />
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6 lg:mx-6 md:mx-4">
         <AdminCard
-          title="Events"
-          link={`/admin/${userId}/manage-events`}
+          title="All Events"
+          link="/admin/all-events"
           value="0"
           icon={<i className="fa fa-calendar-alt"></i>}
         />
         <AdminCard
-          title="Customers"
-          link={`/admin/${userId}/customers`}
+          title="All Users"
+          link="/admin/all-users"
           value="0"
           icon={<i className="fa fa-users"></i>}
         />
         <AdminCard
-          title="Views"
-          link={`/admin/${userId}/views`}
+          title="Total Views"
+          link="/admin/total-views"
           value="0"
           icon={<i className="fa fa-eye"></i>}
         />
         <AdminCard
-          title="Total Ticket Revenue"
-          link={`/admin/${userId}/ticket-revenue`}
+          title="Total Revenue"
+          link="/admin/total-revenue"
           value="0"
           icon={<i className="fa fa-ticket-alt"></i>}
           isRevenue={true}
         />
         <AdminCard
-          title="Total Ticket Transactions"
-          link={`/admin/${userId}/ticket-transactions`}
+          title="All Transactions"
+          link="/admin/all-transactions"
           value="0"
           icon={<i className="fa fa-exchange-alt"></i>}
         />
@@ -236,4 +160,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;

@@ -40,10 +40,13 @@ const Login = () => {
       try {
         // Get the current logged-in user
         const user = await account.get();
-        const userId = user.$id;
 
-        // Redirect to user-specific dashboard
-        navigate(`/admin/${userId}/dashboard`);
+        // Check user role and redirect accordingly
+        if (user.labels.includes("admin")) {
+          navigate("/admin-dashboard");
+        } else {
+          navigate(`/guest-dashboard/${user.$id}`);
+        }
       } catch (error) {
         // No active session; user will remain on the login page
         console.log("No active session:", error);
@@ -78,7 +81,6 @@ const Login = () => {
 
       // Get the current logged-in user
       const user = await account.get();
-      const userId = user.$id;
 
       // Set successful login status
       setSubmitStatus({
@@ -87,8 +89,12 @@ const Login = () => {
         error: "",
       });
 
-      // Navigate to user-specific dashboard
-      navigate(`/admin/${userId}/dashboard`);
+      // Navigate based on user role
+      if (user.labels.includes("admin")) {
+        navigate("/admin-dashboard");
+      } else {
+        navigate(`/guest-dashboard/${user.$id}`);
+      }
     } catch (error) {
       // Handle login errors
       console.error("Login error:", error);
@@ -120,8 +126,8 @@ const Login = () => {
       <Header />
       <Section>
         <Heading
-          title="Noizy Nightz Admins"
-          tag="Login as an admin"
+          title={showRegister ? "Register as Event Host" : "Welcome to Noizy"}
+          tag={showRegister ? "Create your account" : "Login to your account"}
           className="text-center mt-4"
         />
       </Section>
@@ -130,7 +136,6 @@ const Login = () => {
           <RegisterForm onBack={toggleForm} />
         ) : (
           <div className="flex items-center flex-col gap-[1rem] max-lg:flex-wrap justify-center">
-            <h1>Login</h1>
             <div className="min-w-[90vw] max-w-[90vw] lg:min-w-[50vw] lg:max-w-[50vw] h-full px-6 bg-n-8 border-2 border-color-7 rounded-[2rem] py-4">
               <div className="flex flex-col h-auto mb-6">
                 {!submitStatus.isSubmitSuccessful && (
@@ -189,7 +194,7 @@ const Login = () => {
                           ></path>
                         </svg>
                       ) : (
-                        "Submit"
+                        "Login"
                       )}
                     </Button>
                   </form>

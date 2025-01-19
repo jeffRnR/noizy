@@ -129,7 +129,7 @@ const RegisterForm = ({ onBack }) => {
       setSuccessMessage(
         "Registration successful! Redirecting to your dashboard..."
       );
-      navigate(`/admin/${user.$id}/dashboard`);
+      navigate(`/guest-dashboard/${user.$id}`);
     } catch (error) {
       console.error("Registration error:", error);
       setErrors({

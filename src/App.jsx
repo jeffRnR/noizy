@@ -9,12 +9,12 @@ import Terms from "./pages/Terms";
 import TicketPurchase from "./pages/TicketPurchase";
 import Album from "./pages/Album";
 import Playlist from "./pages/Playlist";
-// import Footer from "./components/Footer";
 import NoizyMerch from "./pages/NoizyMerch";
 import NoizyMarketplace from "./pages/NoizyMarketplace";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
-import Dashboard from "./admin/pages/Dashboard";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+import GuestDashboard from "./admin/pages/GuestDashboard";
 import ManageEvents from "./admin/pages/ManageEvents";
 import Checkout from "./pages/Checkout";
 
@@ -33,11 +33,11 @@ const App = () => {
                 <Events />
                 <Membership />
                 <Playlist />
-                {/* <Footer /> */}
               </>
             }
           />
-          {/* Route for Ticket Purchase */}
+
+          {/* Public Routes */}
           <Route path="/purchase/:eventId" element={<TicketPurchase />} />
           <Route path="/checkout/:eventId" element={<Checkout />} />
           <Route path="/membershipPayment" element={<MembershipPayment />} />
@@ -48,9 +48,23 @@ const App = () => {
           <Route path="/noizy-marketplace" element={<NoizyMarketplace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin/:userId/dashboard" element={<Dashboard />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/all-events" element={<ManageEvents />} />
+          <Route path="/admin/all-users" element={<ManageEvents />} />
+          <Route path="/admin/total-views" element={<ManageEvents />} />
+          <Route path="/admin/total-revenue" element={<ManageEvents />} />
+          <Route path="/admin/all-transactions" element={<ManageEvents />} />
+
+          {/* Guest Brand Routes */}
+          <Route path="/guest-dashboard/:userId" element={<GuestDashboard />} />
+          <Route path="/guest/:userId/events" element={<ManageEvents />} />
+          <Route path="/guest/:userId/customers" element={<ManageEvents />} />
+          <Route path="/guest/:userId/views" element={<ManageEvents />} />
+          <Route path="/guest/:userId/revenue" element={<ManageEvents />} />
           <Route
-            path="/admin/:userId/manage-events"
+            path="/guest/:userId/transactions"
             element={<ManageEvents />}
           />
         </Routes>
