@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { noizy_logo } from "../../assets";
+import { noizy_logo, noizylogo_new } from "../../assets";
 
 const TitleBar = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const TitleBar = () => {
         <div>
           <a href="/">
             <img
-              src={noizy_logo}
+              src={noizylogo_new}
               alt="Noizy Logo"
               className="mr-4 rounded-full"
               width={40}

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Client, Account, Databases, Query } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
-import { noizy_logo, loading as loading3 } from "../../assets";
+import { noizy_logo, loading as loading3, noizylogo_new } from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
@@ -33,6 +33,7 @@ const GuestDashboard = () => {
       try {
         // Step 1: Fetch the authenticated user's data
         const currentUser = await account.get();
+        console.log("curent user is:", currentUser);
         if (currentUser.labels.includes("admin")) {
           // Redirect admin users to admin dashboard
           navigate("/admin-dashboard");
@@ -92,7 +93,7 @@ const GuestDashboard = () => {
           <div>
             <a href="/">
               <img
-                src={noizy_logo}
+                src={noizylogo_new}
                 alt="Noizy Logo"
                 className="mr-4 rounded-full"
                 width={40}

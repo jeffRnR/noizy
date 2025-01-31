@@ -3,7 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Client, Account, Databases, ID, Query } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
-import { noizy_logo, loading as loadingAnimation } from "../../assets";
+import {
+  noizy_logo,
+  loading as loadingAnimation,
+  noizylogo_new,
+} from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
@@ -139,7 +143,7 @@ const Dashboard = () => {
           <div>
             <a href="/">
               <img
-                src={noizy_logo}
+                src={noizylogo_new}
                 alt="Noizy Logo"
                 className="mr-4 rounded-full"
                 width={40}
