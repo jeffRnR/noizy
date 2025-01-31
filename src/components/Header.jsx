@@ -2,7 +2,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
-import { noizy_logo } from "../assets";
+import { noizy_logo, noizylogo_new } from "../assets";
 import { navigation } from "../constants";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
@@ -39,7 +39,7 @@ const Header = () => {
           href="/"
         >
           <img
-            src={noizy_logo}
+            src={noizylogo_new}
             alt="Noizy Logo"
             width={40}
             height={40}

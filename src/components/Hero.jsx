@@ -5,6 +5,7 @@ import {
   noizy_2,
   noizy_3,
   noizy_logo,
+  noizylogo_new,
 } from "../assets";
 import Button from "./Button";
 import Section from "./Section";
@@ -56,7 +57,7 @@ const Hero = () => {
               md:aspect-[605/595] lg:aspect-[1124/585]"
               >
                 <img
-                  src={noizy_3}
+                  src={noizylogo_new}
                   className="w-full scale-[1] translate-y-[0] md:scale-[1]
                   md:-translate-y-[10%] lg:-translate-y-[41%]"
                   width={1024}
