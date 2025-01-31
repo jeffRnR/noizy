@@ -24,6 +24,7 @@ import noizy_logo from "./noizy_logo.png";
 import noizy_1 from "./noizy_1.jpg";
 import noizy_2 from "./noizy_2.jpg";
 import noizy_3 from "./noizy_3.jpg";
+import noizy_draft1 from "./noizy_draft1.png";
 
 import curve from "./hero/curve.png";
 import robot from "./hero/robot.jpg";
@@ -154,4 +155,5 @@ export {
   noizy_2,
   noizy_3,
   spotify,
+  noizy_draft1,
 };

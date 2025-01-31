@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Client, Account, Databases, ID, Query } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
-import { noizy_logo, loading as loading3 } from "../../assets";
+import { noizy_logo, loading as loadingAnimation } from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
@@ -13,6 +13,7 @@ import {
   DATABASE_ID,
   GUESTBRANDS_COLLECTION_ID,
 } from "../../../lib/appwrite.config";
+import TitleBar from "../components/TitleBar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -88,13 +89,12 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="items-center text-center justify-center align-middle">
-        <img
-          src={loading3}
-          alt="Loading..."
-          className="items-center text-center justify-center align-middle"
-        />
-      </div>
+      <Section className="pt-[4rem] pb-[2rem]">
+        <TitleBar />
+        <div className="flex items-center justify-center min-h-[50vh]">
+          <img src={loadingAnimation} alt="Loading..." className="w-16 h-16" />
+        </div>
+      </Section>
     );
   }
 
