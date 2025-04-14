@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Client, Account } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
-import { noizy_logo, loading as loading3, noizylogo_new } from "../../assets";
+import {
+  noizy_logo,
+  loading as loading3,
+  noizylogo_new,
+  logo_new,
+} from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
@@ -69,11 +74,11 @@ const AdminDashboard = () => {
           <div>
             <a href="/">
               <img
-                src={noizylogo_new}
+                src={logo_new}
                 alt="Noizy Logo"
                 className="mr-4 rounded-full"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
               />
             </a>
           </div>

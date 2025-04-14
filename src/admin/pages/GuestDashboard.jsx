@@ -1,9 +1,15 @@
+// GuestDashboard.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Client, Account, Databases, Query } from "appwrite";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
-import { noizy_logo, loading as loading3, noizylogo_new } from "../../assets";
+import {
+  noizy_logo,
+  loading as loading3,
+  noizylogo_new,
+  logo_new,
+} from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
@@ -23,25 +29,31 @@ const GuestDashboard = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const { userId } = useParams();
 
-  // Initialize Appwrite
-  const client = new Client().setEndpoint(ENDPOINT).setProject(PROJECT_ID);
-  const account = new Account(client);
-  const databases = new Databases(client);
+  // Initialize Appwrite with proper session handling
+  const initializeAppwrite = () => {
+    const client = new Client().setEndpoint(ENDPOINT).setProject(PROJECT_ID);
+
+    const account = new Account(client);
+    const databases = new Databases(client);
+
+    return { client, account, databases };
+  };
 
   useEffect(() => {
     const fetchUserAndBrandData = async () => {
       try {
-        // Step 1: Fetch the authenticated user's data
+        // Initialize Appwrite services
+        const { account, databases } = initializeAppwrite();
+
+        // Verify session and get user
         const currentUser = await account.get();
-        console.log("curent user is:", currentUser);
         if (currentUser.labels.includes("admin")) {
-          // Redirect admin users to admin dashboard
           navigate("/admin-dashboard");
           return;
         }
         setUser(currentUser);
 
-        // Step 2: Query the brand data collection using the user's ID
+        // Query brand data with proper error handling
         const response = await databases.listDocuments(
           DATABASE_ID,
           GUESTBRANDS_COLLECTION_ID,
@@ -51,11 +63,14 @@ const GuestDashboard = () => {
         if (response.documents.length > 0) {
           setBrandData(response.documents[0]);
         } else {
-          setError("No brand data found. Please contact support.");
+          throw new Error("No brand data found");
         }
       } catch (err) {
-        setError("Error loading dashboard. Please try again later.");
-        console.error(err);
+        if (err.code === 401) {
+          navigate("/login");
+          return;
+        }
+        setError(err.message || "Error loading dashboard");
       } finally {
         setLoading(false);
       }
@@ -66,6 +81,7 @@ const GuestDashboard = () => {
 
   const handleLogout = async () => {
     try {
+      const { account } = initializeAppwrite();
       await account.deleteSession("current");
       navigate("/login");
     } catch (err) {
@@ -93,11 +109,11 @@ const GuestDashboard = () => {
           <div>
             <a href="/">
               <img
-                src={noizylogo_new}
+                src={logo_new}
                 alt="Noizy Logo"
                 className="mr-4 rounded-full"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
               />
             </a>
           </div>

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Client, Account, Databases, ID, Query } from "appwrite";
+import {
+  account,
+  databases,
+  DATABASE_ID,
+  GUESTBRANDS_COLLECTION_ID,
+  Query,
+} from "../../../lib/appwrite.config";
 import Button from "../../components/Button";
 import Section from "../../components/Section";
 import {
-  noizy_logo,
-  loading as loadingAnimation,
   noizylogo_new,
+  loading as loadingAnimation,
+  logo_new,
 } from "../../assets";
 import Heading from "../../components/Heading";
 import Footer from "../../components/Footer";
 import AdminCard from "../components/AdminCards";
-import {
-  ENDPOINT,
-  PROJECT_ID,
-  DATABASE_ID,
-  GUESTBRANDS_COLLECTION_ID,
-} from "../../../lib/appwrite.config";
 import TitleBar from "../components/TitleBar";
 
 const Dashboard = () => {
@@ -28,59 +28,36 @@ const Dashboard = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const { userId } = useParams();
 
-  // Initialize Appwrite
-  const client = new Client().setEndpoint(ENDPOINT).setProject(PROJECT_ID);
-
-  const account = new Account(client);
-  const databases = new Databases(client);
-
   useEffect(() => {
     const fetchUserAndBrandData = async () => {
       try {
-        // Step 1: Fetch the authenticated user's data
         const currentUser = await account.get();
+        console.log("Dashboard - Current User:", currentUser);
         setUser(currentUser);
 
-        // Step 2: Query the brand data collection using the user's ID
         const response = await databases.listDocuments(
           DATABASE_ID,
           GUESTBRANDS_COLLECTION_ID,
-          [
-            Query.equal("userId", [currentUser.$id]), // Using the correct user ID from Appwrite
-          ]
+          [Query.equal("userId", [currentUser.$id])]
         );
-
+        console.log("Dashboard - Brand data:", response.documents);
         if (response.documents.length > 0) {
-          // Assuming the first document is the correct one for the user
-          const brand = response.documents[0];
-          setBrandData(brand);
+          setBrandData(response.documents[0]);
         } else {
           setError("No brand data found for this user.");
         }
       } catch (err) {
-        setError(`Error fetching brand data: ${err.message}`);
+        console.error("Dashboard - Error fetching data:", err);
+        setError(`Error fetching data: ${err.message}`);
+        if (err.code === 401) {
+          navigate("/login", { state: { from: window.location.pathname } });
+        }
       } finally {
         setLoading(false);
       }
     };
-
     fetchUserAndBrandData();
-  }, []);
-
-  // const fetchBrandData = async (userId) => {
-  //   try {
-  //     const response = await databases.getDocument(
-  //       DATABASE_ID,
-  //       GUESTBRANDS_COLLECTION_ID,
-  //       // [Query.equal("userId", userId)]
-  //       documentId
-  //       // userId // Ensure this matches the document ID
-  //     );
-  //     setBrandData(response);
-  //   } catch (error) {
-  //     console.error("Error fetching brand data:", error);
-  //   }
-  // };
+  }, [navigate]);
 
   const handleLogout = async () => {
     try {
@@ -106,48 +83,18 @@ const Dashboard = () => {
     return <div>{error}</div>;
   }
 
-  // Card component to display metrics
-  // const Card = ({ title, link, value, icon, isRevenue }) => (
-  //   <Link
-  //     to={link}
-  //     className="relative mx-6 z-0 bg-n-8 rounded-xl shadow-lg hover:shadow-xl border-2 border-color-7 transition duration-300 ease-in-out px-6 py-4"
-  //   >
-  //     <div className="flex flex-col justify-between gap-4">
-  //       <div className="text-2xl text-color-1">
-  //         <span>{icon}</span>
-  //       </div>
-  //       <div className="flex flex-col justify-between w-full">
-  //         <h3 className="text-xl font-semibold mb-2">{title}</h3>
-  //         <span
-  //           className={`text-sm font-semibold mb-4 ${
-  //             isRevenue ? "text-color-4/85" : "text-color-2"
-  //           }`}
-  //         >
-  //           {isRevenue ? `KES ${value}` : value}
-  //         </span>
-  //       </div>
-  //     </div>
-  //     <div className="absolute top-0 right-0 p-3 text-white rounded-full">
-  //       <span>
-  //         <i className="fa fa-arrow-right"></i>
-  //       </span>
-  //     </div>
-  //   </Link>
-  // );
-
   return (
     <Section className="pt-[4rem] pb-[2rem]" id="admin-dashboard">
-      {/* Title Bar */}
       <div className="fixed left-0 top-0 w-full z-50 border-b border-n-6 bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out">
         <div className="flex flex-row justify-between mx-6 my-2 px-0 lg:px-7.5 xl:px-10 max-lg:py-4">
           <div>
             <a href="/">
               <img
-                src={noizylogo_new}
+                src={logo_new}
                 alt="Noizy Logo"
                 className="mr-4 rounded-full"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
               />
             </a>
           </div>
@@ -200,11 +147,10 @@ const Dashboard = () => {
         tag="One Stop to Manage Everything"
       />
 
-      {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6 lg:mx-6 md:mx-4">
         <AdminCard
           title="Events"
-          link={`/admin/${userId}/manage-events`}
+          link={user ? `/guest/${user.$id}/manage-events` : "/login"}
           value="0"
           icon={<i className="fa fa-calendar-alt"></i>}
         />

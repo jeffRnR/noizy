@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Client, Account } from "appwrite";
+import { account } from "../../lib/appwrite.config";
 import { useNavigate } from "react-router-dom";
-import { PROJECT_ID, ENDPOINT } from "../../lib/appwrite.config";
 
-// Components
 import Header from "../components/Header";
 import Section from "../components/Section";
 import Heading from "../components/Heading";
@@ -12,12 +10,7 @@ import Footer from "../components/Footer";
 import RegisterForm from "../components/RegisterForm";
 
 const Login = () => {
-  // Initialize Appwrite client
-  const client = new Client();
-  client.setEndpoint(ENDPOINT).setProject(PROJECT_ID);
-  const account = new Account(client);
-
-  // State management
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,41 +21,32 @@ const Login = () => {
     isSuccess: false,
     error: "",
   });
-
-  const navigate = useNavigate();
   const [showRegister, setShowRegister] = useState(false);
 
   const toggleForm = () => setShowRegister((prev) => !prev);
 
-  // Check for an existing session on component mount
   useEffect(() => {
     const checkSession = async () => {
       try {
-        // Get the current logged-in user
         const user = await account.get();
-
-        // Check user role and redirect accordingly
+        console.log("Active session found:", user);
         if (user.labels.includes("admin")) {
           navigate("/admin-dashboard");
         } else {
           navigate(`/guest-dashboard/${user.$id}`);
         }
       } catch (error) {
-        // No active session; user will remain on the login page
         console.log("No active session:", error);
       }
     };
-
     checkSession();
-  }, [account, navigate]);
+  }, [navigate]);
 
-  // Input change handler
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -73,30 +57,26 @@ const Login = () => {
     });
 
     try {
-      // Create email session
-      await account.createEmailPasswordSession(
+      const session = await account.createEmailPasswordSession(
         formData.email,
         formData.password
       );
-
-      // Get the current logged-in user
+      console.log("Session created:", session);
       const user = await account.get();
+      console.log("Logged-in user:", user);
 
-      // Set successful login status
       setSubmitStatus({
         isSubmitSuccessful: true,
         isSuccess: true,
         error: "",
       });
 
-      // Navigate based on user role
       if (user.labels.includes("admin")) {
         navigate("/admin-dashboard");
       } else {
-        navigate(`/guest-dashboard/${user.$id}`);
+        navigate(`/guest-dashboard/${user.$id}`); // Ensure this matches Dashboard route
       }
     } catch (error) {
-      // Handle login errors
       console.error("Login error:", error);
       setSubmitStatus({
         isSubmitSuccessful: true,
@@ -108,7 +88,6 @@ const Login = () => {
     }
   };
 
-  // Reset form handler
   const handleReset = () => {
     setSubmitStatus({
       isSubmitSuccessful: false,

@@ -2,7 +2,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
-import { noizy_logo, noizylogo_new } from "../assets";
+import { noizy_logo, noizylogo_new, logo_new } from "../assets";
 import { navigation } from "../constants";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
@@ -33,17 +33,17 @@ const Header = () => {
     border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm transition-all duration-700 ease-in-out
     ${openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop:blur-sm"}`}
     >
-      <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4 transition-all duration-700 ease-in-out">
+      <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-2 transition-all duration-700 ease-in-out">
         <a
-          className="block w-[12rem] xl:mr-8 transition-all duration-700 ease-in-out"
+          className="block w-[13rem] xl:mr-8 transition-all duration-700 ease-in-out"
           href="/"
         >
           <img
-            src={noizylogo_new}
+            src={logo_new}
             alt="Noizy Logo"
-            width={40}
-            height={40}
-            className="rounded-full"
+            width={80}
+            height={80}
+            // className="rounded-full"
           />
         </a>
         <nav
@@ -54,7 +54,7 @@ const Header = () => {
         >
           <div
             className="relative z-2 flex flex-col items-center 
-            justify-center m-auto lg:flex-row  h-full my-6 transition-all duration-700 ease-in-out"
+            justify-center m-auto lg:flex-row  h-full my-2 transition-all duration-700 ease-in-out"
           >
             {navigation.map((item) => (
               <Link

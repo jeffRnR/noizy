@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import AdminDashboard from "./admin/pages/AdminDashboard";
 import GuestDashboard from "./admin/pages/GuestDashboard";
 import ManageEvents from "./admin/pages/ManageEvents";
+import EventDetails from "./admin/pages/EventDetails"; // Import the new component
 import Checkout from "./pages/Checkout";
 
 const App = () => {
@@ -36,7 +37,6 @@ const App = () => {
               </>
             }
           />
-
           {/* Public Routes */}
           <Route path="/purchase/:eventId" element={<TicketPurchase />} />
           <Route path="/checkout/:eventId" element={<Checkout />} />
@@ -48,7 +48,6 @@ const App = () => {
           <Route path="/noizy-marketplace" element={<NoizyMarketplace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/all-events" element={<ManageEvents />} />
@@ -56,7 +55,8 @@ const App = () => {
           <Route path="/admin/total-views" element={<ManageEvents />} />
           <Route path="/admin/total-revenue" element={<ManageEvents />} />
           <Route path="/admin/all-transactions" element={<ManageEvents />} />
-
+          <Route path="/admin/event/:eventId" element={<EventDetails />} />{" "}
+          {/* New route */}
           {/* Guest Brand Routes */}
           <Route path="/guest-dashboard/:userId" element={<GuestDashboard />} />
           <Route path="/guest/:userId/events" element={<ManageEvents />} />
@@ -67,6 +67,11 @@ const App = () => {
             path="/guest/:userId/transactions"
             element={<ManageEvents />}
           />
+          <Route
+            path="/guest/:userId/event/:eventId"
+            element={<EventDetails />}
+          />{" "}
+          {/* New route */}
         </Routes>
       </div>
       <ButtonGradient />
